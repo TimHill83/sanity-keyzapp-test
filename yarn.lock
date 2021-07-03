@@ -1505,7 +1505,7 @@
     "@types/react" "^17.0.0"
     rxjs "^6.5.3"
 
-"@sanity/ui@^0.34.3":
+"@sanity/ui@^0.34.1", "@sanity/ui@^0.34.3":
   version "0.34.4"
   resolved "https://registry.npmjs.org/@sanity/ui/-/ui-0.34.4.tgz#cb01ea9384c355b9ce8fd2c834424668d5769565"
   dependencies:
@@ -6600,7 +6600,7 @@ prompts@~2.3.2:
     kleur "^3.0.3"
     sisteransi "^1.0.4"
 
-prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.7, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7, prop-types@^15.7.2:
+prop-types@15.7.2, prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.7, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.npmjs.org/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   dependencies:
@@ -7310,6 +7310,15 @@ sanity-diff-patch@^1.0.9:
   resolved "https://registry.npmjs.org/sanity-diff-patch/-/sanity-diff-patch-1.0.9.tgz#fb1fa3b52c27d369878af57ba02fee779b3ca8bd"
   dependencies:
     diff-match-patch "^1.0.5"
+
+sanity-plugin-iframe-pane@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.npmjs.org/sanity-plugin-iframe-pane/-/sanity-plugin-iframe-pane-1.0.5.tgz#d8b97b55be54f3559eb54f0217355115af297c67"
+  integrity sha512-sHWVJmZF0jgs1cH0RKuR4+/TXf/95O12JxEiWfw1SIdEb0aFQlxS6pWiwK14//gAF7G50ml6tSWsVY6uInAFDA==
+  dependencies:
+    "@sanity/icons" "^1.1.2"
+    "@sanity/ui" "^0.34.1"
+    prop-types "15.7.2"
 
 sax@~1.2.4:
   version "1.2.4"
