@@ -2,6 +2,7 @@ import S from "@sanity/desk-tool/structure-builder";
 import React from "react";
 import Iframe from "sanity-plugin-iframe-pane";
 import contentIFrame from "./components/contentIFrame";
+import EmailPreview from "./components/emailPreview";
 
 const JsonPreview = ({ document }) => (
   <>
@@ -39,7 +40,7 @@ export const getDefaultDocumentNode = () => {
         // OR a string
         //url: `https://www.keyzapp.com`,
       })
-      .title("Preview"),
+      .title("IFrame"),
     S.view
       .component(contentIFrame)
       .options({
@@ -49,7 +50,17 @@ export const getDefaultDocumentNode = () => {
         // OR a string
         //url: `https://www.keyzapp.com`,
       })
-      .title("Content"),
+      .title("Hacked IFrame"),
+    S.view
+      .component(EmailPreview)
+      // .options({
+      //   url: myfunc,
+      //   // Accepts an async function
+      //   //url: (doc) => resolveProductionUrl(doc),
+      //   // OR a string
+      //   //url: `https://www.keyzapp.com`,
+      // })
+      .title("New"),
   ]);
 };
 export default () => S.list().title("Base").items(S.documentTypeListItems());
