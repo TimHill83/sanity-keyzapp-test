@@ -20,16 +20,20 @@ class EmailPreview extends Component {
     }
   };
 
-  async componentDidMount() {
+  async UpdateContent() {
     let apiOutput = "";
 
     try {
       apiOutput = await this.getHtmlAndMjmlAxios();
-      this.setState({ content: apiOutput.html });
+      this.setState({ content: apiOutput.html, errors: "" });
     } catch (error) {
       apiOutput = "";
       this.setState({ content: "", errors: error.response.data.message ?? error.message });
     }
+  }
+
+  async componentDidMount() {
+    await this.UpdateContent();
   }
 
   render() {
@@ -70,6 +74,15 @@ class EmailPreview extends Component {
               text="Copy"
               tone="default"
               onClick={() => handleCopy()}
+            />
+            <Button
+              fontSize={[1]}
+              icon={CopyIcon}
+              style={{ marginLeft: `0.5rem` }}
+              padding={[2]}
+              text="Refresh"
+              tone="default"
+              onClick={() => this.UpdateContent()}
             />
           </Flex>
           {renderErrors()}
