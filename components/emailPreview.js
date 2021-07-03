@@ -29,9 +29,7 @@ class EmailPreview extends Component {
     } catch (error) {
       apiOutput = "";
       this.setState({ content: "", errors: error.response.data.message ?? error.message });
-      //console.log(err);
     }
-    // console.log(result);
   }
 
   render() {
