@@ -10,7 +10,6 @@ function Iframe({ document: sanityDocument, options }) {
   const input = useRef();
   const { displayed } = sanityDocument;
 
-  let viewerwidth = "100%";
   function handleCopy() {
     if (!input?.current) return;
 
@@ -94,7 +93,7 @@ function Iframe({ document: sanityDocument, options }) {
           frameBorder="0"
           dangerouslySetInnerHTML={{ __html: displayContent }}
         ></iframe> */}
-        <EmailPreview content={displayContent} />
+        <object style={{ width: "100%", height: "100%" }} dangerouslySetInnerHTML={{ __html: displayContent }} />
       </Flex>
     </ThemeProvider>
   );
