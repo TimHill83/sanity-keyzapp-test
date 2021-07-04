@@ -1,13 +1,21 @@
 import React from "react";
-function InlineHtml(props) {
-  return (
-    <iframe
-      style={{ width: props.mobile ? "320px" : "90%", minWidth: "800px", height: "900px", margin: "10px" }}
-      srcDoc={props.content}
-      //dangerouslySetInnerHTML={{ __html: props.content
-      //}}
-    />
-  );
+import { Component } from "react";
+import { render } from "react-dom";
+
+class InlineHtml extends Component {
+  render() {
+    const mobileStyles = {
+      width: "360px",
+      height: "568px",
+    };
+
+    const desktopStyles = {
+      width: "95%",
+      minWidth: "800px",
+      height: "700px",
+    };
+    return <iframe style={this.props.mobile ? mobileStyles : desktopStyles} srcDoc={this.props.content} />;
+  }
 }
 
 export default InlineHtml;

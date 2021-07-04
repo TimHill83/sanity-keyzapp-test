@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import InlineHtml from "./InlineHtml";
 import axios from "axios";
 import { Flex, Text, Button, studioTheme, ThemeProvider } from "@sanity/ui";
-import { CopyIcon, LeaveIcon } from "@sanity/icons";
+import { CopyIcon, MobileDeviceIcon, ResetIcon } from "@sanity/icons";
 
 class EmailPreview extends Component {
   state = { Mobile: false };
@@ -75,6 +75,7 @@ class EmailPreview extends Component {
         />
         <Flex direction="column" style={{ height: `100%` }}>
           <Flex
+            justify="space-between"
             style={{
               alignItems: `center`,
               borderBottom: `1px solid var(--card-border-color)`,
@@ -82,45 +83,42 @@ class EmailPreview extends Component {
               flexShrink: 0,
             }}
           >
-            <Button
-              fontSize={[1]}
-              icon={CopyIcon}
-              style={{ marginLeft: `0.5rem` }}
-              padding={[2]}
-              text="Copy Html"
-              tone="default"
-              onClick={() => this.handleCopy()}
-            />
-            <Button
-              fontSize={[1]}
-              icon={CopyIcon}
-              style={{ marginLeft: `0.5rem` }}
-              padding={[2]}
-              text="Refresh"
-              tone="default"
-              onClick={() => this.UpdateContent()}
-            />
-            <Button
-              fontSize={[1]}
-              icon={CopyIcon}
-              style={{ marginLeft: `0.5rem` }}
-              padding={[2]}
-              text="Deskop"
-              tone="default"
-              onClick={() => this.UpdateContent()}
-            />
-            <Button
-              fontSize={[1]}
-              icon={CopyIcon}
-              style={{ marginLeft: `0.5rem` }}
-              padding={[2]}
-              text="Mobile"
-              tone="primary"
-              onClick={() => this.toggleMobile()}
-            />
+            <Flex>
+              <Button
+                fontSize={[1]}
+                icon={ResetIcon}
+                style={{ marginLeft: `0.5rem` }}
+                padding={[2]}
+                text="Refresh"
+                tone="default"
+                onClick={() => this.UpdateContent()}
+              />
+              <Button
+                fontSize={[1]}
+                icon={CopyIcon}
+                style={{ marginLeft: `0.5rem` }}
+                padding={[2]}
+                text="Copy Html"
+                tone="default"
+                onClick={() => this.handleCopy()}
+              />
+            </Flex>
+            <Flex>
+              <Button
+                fontSize={[1]}
+                icon={MobileDeviceIcon}
+                style={{ marginLeft: `0.5rem` }}
+                padding={[2]}
+                text={this.state.Mobile ? "Desktop" : "Mobile"}
+                tone={this.state.Mobile ? "primary" : "default"}
+                onClick={() => this.toggleMobile()}
+              />
+            </Flex>
           </Flex>
-          {renderErrors()}
-          {renderIFrame()}
+          <Flex align="center" justify="center">
+            {renderErrors()}
+            {renderIFrame()}
+          </Flex>
         </Flex>
       </ThemeProvider>
     );
