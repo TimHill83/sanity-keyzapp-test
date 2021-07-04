@@ -5,7 +5,22 @@ import { Flex, Text, Button, studioTheme, ThemeProvider } from "@sanity/ui";
 import { CopyIcon, LeaveIcon } from "@sanity/icons";
 
 class EmailPreview extends Component {
-  state = {};
+  state = { Mobile: false };
+  inputRef = React.createRef();
+
+  handleCopy = function () {
+    if (!this.inputRef?.current) return;
+
+    this.inputRef.current.select();
+    this.inputRef.current.setSelectionRange(0, 99999);
+
+    // eslint-disable-next-line react/prop-types
+    document.execCommand("copy");
+  };
+
+  toggleMobile = function () {
+    this.setState({ Mobile: !this.state.Mobile });
+  };
 
   getHtmlAndMjmlAxios = async function () {
     const Url = "http://localhost:7071/api/Generate?sanityid=" + this.props.document.displayed._id;
@@ -13,9 +28,8 @@ class EmailPreview extends Component {
       let { data } = await axios.get(Url);
       return data;
     } catch (error) {
-      console.log("An error occurred:");
-      console.log(error.message);
-      console.log(error.response.data.message);
+      console.log("1st: " + error);
+      console.log("Message: " + error.message);
       throw error;
     }
   };
@@ -28,7 +42,9 @@ class EmailPreview extends Component {
       this.setState({ content: apiOutput.html, errors: "" });
     } catch (error) {
       apiOutput = "";
-      this.setState({ content: "", errors: error.response.data.message ?? error.message });
+      console.log(error);
+
+      this.setState({ content: "", errors: error.response?.data ? error.response.data.message : error.message });
     }
   }
 
@@ -39,7 +55,7 @@ class EmailPreview extends Component {
   render() {
     const renderIFrame = () => {
       if (this.state.content) {
-        return <InlineHtml content={this.state.content} />;
+        return <InlineHtml mobile={this.state.Mobile} content={this.state.content} />;
       }
     };
     const renderErrors = () => {
@@ -50,13 +66,13 @@ class EmailPreview extends Component {
 
     return (
       <ThemeProvider theme={studioTheme}>
-        {/* <textarea
+        <textarea
           style={{ position: `absolute`, pointerEvents: `none`, opacity: 0 }}
-          ref={input}
-          value={displayContent}
+          value={this.state.content}
+          ref={this.inputRef}
           readOnly
           tabIndex="-1"
-        /> */}
+        />
         <Flex direction="column" style={{ height: `100%` }}>
           <Flex
             style={{
@@ -71,9 +87,9 @@ class EmailPreview extends Component {
               icon={CopyIcon}
               style={{ marginLeft: `0.5rem` }}
               padding={[2]}
-              text="Copy"
+              text="Copy Html"
               tone="default"
-              onClick={() => handleCopy()}
+              onClick={() => this.handleCopy()}
             />
             <Button
               fontSize={[1]}
@@ -83,6 +99,24 @@ class EmailPreview extends Component {
               text="Refresh"
               tone="default"
               onClick={() => this.UpdateContent()}
+            />
+            <Button
+              fontSize={[1]}
+              icon={CopyIcon}
+              style={{ marginLeft: `0.5rem` }}
+              padding={[2]}
+              text="Deskop"
+              tone="default"
+              onClick={() => this.UpdateContent()}
+            />
+            <Button
+              fontSize={[1]}
+              icon={CopyIcon}
+              style={{ marginLeft: `0.5rem` }}
+              padding={[2]}
+              text="Mobile"
+              tone="primary"
+              onClick={() => this.toggleMobile()}
             />
           </Flex>
           {renderErrors()}
