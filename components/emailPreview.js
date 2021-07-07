@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import InlineHtml from "./InlineHtml";
 import axios from "axios";
+import client from "part:@sanity/base/client";
+
 import { Flex, Text, Button, studioTheme, ThemeProvider } from "@sanity/ui";
 import { CopyIcon, MobileDeviceIcon, ResetIcon } from "@sanity/icons";
 
@@ -23,7 +25,16 @@ class EmailPreview extends Component {
   };
 
   getHtmlAndMjmlAxios = async function () {
-    const Url = "http://localhost:7071/api/Generate?sanityid=" + this.props.document.displayed._id;
+    const emailApiBase = process.env.SANITY_STUDIO_EMAIL_API_BASE;
+    const emailApiKey = process.env.SANITY_STUDIO_EMAIL_API_KEY;
+    const { dataset } = client.config();
+    console.log(dataset);
+    const Url = `${emailApiBase}/Generate?sanityid=${this.props.document.displayed._id}&dataset=${dataset}${
+      emailApiKey ? "&code=" + emailApiKey : ""
+    }`;
+    console.log(Url);
+    //const Url = `http://localhost:7071/api/Generate?sanityid=${this.props.document.displayed._id}&dataset=${dataset}`;
+
     try {
       let { data } = await axios.get(Url);
       return data;

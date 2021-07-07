@@ -19,7 +19,15 @@
     "development": {
       "plugins": [
         "@sanity/vision"
-      ]
+      ],
+      "api": {
+        "dataset": "staging"
+      }
+    },
+    "production": {
+      "api": {
+        "dataset": "production"
+      }
     }
   },
   "parts": [
