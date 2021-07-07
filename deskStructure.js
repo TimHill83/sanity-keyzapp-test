@@ -6,4 +6,4 @@ export const getDefaultDocumentNode = () => {
   // as well as the default form view
   return S.document().views([S.view.form(), S.view.component(EmailPreview).title("Preview")]);
 };
-export default () => S.list().title("Base").items(S.documentTypeListItems());
+export default () => S.list().title("Content").items(S.documentTypeListItems());

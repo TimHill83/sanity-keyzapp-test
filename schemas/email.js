@@ -1,7 +1,9 @@
+import { FaMailBulk } from "react-icons/fa";
 export default {
   name: "emailTemplate",
   title: "Email",
   type: "document",
+  icon: FaMailBulk,
   fields: [
     {
       title: "Title",
