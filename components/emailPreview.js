@@ -8,13 +8,24 @@ import { CopyIcon, MobileDeviceIcon, ResetIcon } from "@sanity/icons";
 
 class EmailPreview extends Component {
   state = { Mobile: false };
-  inputRef = React.createRef();
+  htmlBoxRef = React.createRef();
+  mjmlBoxRef = React.createRef();
 
-  handleCopy = function () {
-    if (!this.inputRef?.current) return;
+  handleCopyHtml = function () {
+    if (!this.htmlBoxRef?.current) return;
 
-    this.inputRef.current.select();
-    this.inputRef.current.setSelectionRange(0, 99999);
+    this.htmlBoxRef.current.select();
+    this.htmlBoxRef.current.setSelectionRange(0, 99999);
+
+    // eslint-disable-next-line react/prop-types
+    document.execCommand("copy");
+  };
+
+  handleCopyMjml = function () {
+    if (!this.mjmlBoxRef?.current) return;
+
+    this.mjmlBoxRef.current.select();
+    this.mjmlBoxRef.current.setSelectionRange(0, 99999);
 
     // eslint-disable-next-line react/prop-types
     document.execCommand("copy");
@@ -50,7 +61,7 @@ class EmailPreview extends Component {
 
     try {
       apiOutput = await this.getHtmlAndMjmlAxios();
-      this.setState({ content: apiOutput.html, errors: "" });
+      this.setState({ content: apiOutput.html, mjml: apiOutput.mjml, errors: "" });
     } catch (error) {
       apiOutput = "";
       console.log(error);
@@ -80,7 +91,14 @@ class EmailPreview extends Component {
         <textarea
           style={{ position: `absolute`, pointerEvents: `none`, opacity: 0 }}
           value={this.state.content}
-          ref={this.inputRef}
+          ref={this.htmlBoxRef}
+          readOnly
+          tabIndex="-1"
+        />
+        <textarea
+          style={{ position: `absolute`, pointerEvents: `none`, opacity: 0 }}
+          value={this.state.mjml}
+          ref={this.mjmlBoxRef}
           readOnly
           tabIndex="-1"
         />
@@ -111,7 +129,16 @@ class EmailPreview extends Component {
                 padding={[2]}
                 text="Copy Html"
                 tone="default"
-                onClick={() => this.handleCopy()}
+                onClick={() => this.handleCopyHtml()}
+              />
+              <Button
+                fontSize={[1]}
+                icon={CopyIcon}
+                style={{ marginLeft: `0.5rem` }}
+                padding={[2]}
+                text="Copy Mjml"
+                tone="default"
+                onClick={() => this.handleCopyMjml()}
               />
             </Flex>
             <Flex>
