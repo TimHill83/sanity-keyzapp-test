@@ -25,6 +25,7 @@ export default {
           type: "button",
         },
         { type: "image" },
+        { type: "richImage" },
       ],
     },
   ],

@@ -11,6 +11,7 @@ import emailContent from "./emailContent";
 import twoColumnSection from "./twoColumnSection";
 import emailColumn from "./emailColumn";
 import emailSection from "./emailSection";
+import richImage from "./richImage";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -28,5 +29,6 @@ export default createSchema({
     twoColumnSection,
     emailColumn,
     emailSection,
+    richImage,
   ]),
 });
