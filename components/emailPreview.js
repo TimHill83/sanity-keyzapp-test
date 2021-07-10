@@ -36,10 +36,20 @@ class EmailPreview extends Component {
   };
 
   getHtmlAndMjmlAxios = async function () {
-    const emailApiBase = process.env.SANITY_STUDIO_EMAIL_API_BASE;
-    const emailApiKey = process.env.SANITY_STUDIO_EMAIL_API_KEY;
     const { dataset } = client.config();
-    console.log(dataset);
+
+    //remove this dodgy code when sanity has an answer on the .env file bug
+    let emailApiBase = "http://localhost:7071/api";
+    let emailApiKey = "";
+    if (dataset === "production") {
+      emailApiBase = "https://zappemailgenerator.azurewebsites.net/api";
+      emailApiKey = "N3i89qtCfCqbj0IfwW/9v7CreUtqJnwMQaJ28FxblR3XjU1FMjKZMA==";
+    }
+
+    //THis method should work!
+    // const emailApiBase = process.env.SANITY_STUDIO_EMAIL_API_BASE;
+    // const emailApiKey = process.env.SANITY_STUDIO_EMAIL_API_KEY;
+
     const Url = `${emailApiBase}/Generate?sanityid=${this.props.document.displayed._id}&dataset=${dataset}${
       emailApiKey ? "&code=" + emailApiKey : ""
     }`;
