@@ -18,6 +18,7 @@ export default {
       title: "Alternative Text",
       description: "Text describing the image if it is not viewable",
       type: "string",
+      validation: (Rule) => Rule.required(),
       options: {
         isHighlighted: true,
       },
