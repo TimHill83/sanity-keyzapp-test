@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import InlineHtml from "./InlineHtml";
 import axios from "axios";
 import client from "part:@sanity/base/client";
+import { debounce } from "lodash";
 
 import { Flex, Text, Button, studioTheme, ThemeProvider } from "@sanity/ui";
 import { CopyIcon, MobileDeviceIcon, ResetIcon } from "@sanity/icons";
@@ -80,8 +81,19 @@ class EmailPreview extends Component {
     }
   }
 
+  refresh = debounce(() => {
+    //console.log("debounce");
+    this.UpdateContent();
+  }, 1000);
+
   async componentDidMount() {
     await this.UpdateContent();
+  }
+  componentDidUpdate(prevProps) {
+    if (prevProps.document.draft.content !== this.props.document.draft.content) {
+      console.log("draft content changed");
+      this.refresh();
+    }
   }
 
   render() {
