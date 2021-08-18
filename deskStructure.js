@@ -1,6 +1,7 @@
 import S from "@sanity/desk-tool/structure-builder";
 import EmailPreview from "./components/emailPreview";
 import React from "react";
+import mjmlrenderer from "./components/mjmlrenderer";
 
 const JsonPreview = ({ document }) => (
   <div>
@@ -16,6 +17,7 @@ export const getDefaultDocumentNode = () => {
     S.view.form(),
     S.view.component(EmailPreview).title("Preview"),
     S.view.component(JsonPreview).title("JSON"),
+    S.view.component(mjmlrenderer).title("MJML Test"),
   ]);
 };
 export default () => S.list().title("Content").items(S.documentTypeListItems());
