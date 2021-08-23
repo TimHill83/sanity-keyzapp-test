@@ -3,7 +3,6 @@ import MjmlEmailContent from "./MjmlEmailContent";
 
 class MjmlEmail extends Component {
   render() {
-    // return <mjml>{this.props.email.preHeader}</mjml>;
     return (
       <mjml>
         <mj-head>
@@ -34,11 +33,6 @@ class MjmlEmail extends Component {
         <mj-body background-color="#ffffff" width="640px">
           <mj-raw> {`{{ snippets.test_data }}`}</mj-raw>
           <mj-section mj-class="ribbon"></mj-section>
-          <mj-section>
-            <mj-column>
-              <mj-text>Content Starts Here</mj-text>
-            </mj-column>
-          </mj-section>
           <MjmlEmailContent emailContent={this.props.email.content}></MjmlEmailContent>
           <mj-section mj-class="ribbon"></mj-section>
           <mj-section padding="10px 20px" full-width="full-width">

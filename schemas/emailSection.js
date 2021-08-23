@@ -39,14 +39,6 @@ export default {
           : "No text",
         subtitle: "Columns: " + value.columns.length,
       };
-      // prepare(selection) {
-      //   const { columns } = selection;
-
-      //   return {
-      //     title: "Section",
-      //     subtitle: "Columns: " + columns.length,
-      //   };
     },
-    // component: `<div>Hello</div>`,
   },
 };

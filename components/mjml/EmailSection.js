@@ -1,7 +1,8 @@
 import React from "react";
+import EmailColumn from "./EmailColumn";
 
 function EmailSection(props) {
-  const { backgroundColor, fullWidth } = props;
+  const { backgroundColor, fullWidth, columns } = props;
 
   return (
     <mj-section
@@ -10,11 +11,9 @@ function EmailSection(props) {
       background-color={backgroundColor}
       padding="0px 10px"
     >
-      <mj-column>
-        <mj-text font-weight="700" color="#19196A" padding-bottom="0" padding="25px 0 0 0">
-          EmailSection
-        </mj-text>
-      </mj-column>
+      {columns.map((column) => {
+        return <EmailColumn column={column}></EmailColumn>;
+      })}
     </mj-section>
   );
 }
