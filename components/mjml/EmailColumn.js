@@ -1,4 +1,5 @@
 import React from "react";
+import EmailContent from "./EmailContent";
 
 function EmailColumn(props) {
   const { column } = props;
@@ -8,7 +9,7 @@ function EmailColumn(props) {
       vertical-align={column.verticalAligment}
       key={column._key}
     >
-      <mj-text>Column</mj-text>
+      <EmailContent content={column.content}></EmailContent>
     </mj-column>
   );
 }

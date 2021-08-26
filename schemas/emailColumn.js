@@ -6,7 +6,7 @@ export default {
     {
       name: "width",
       title: "Column Width",
-      description: "Percentage width of the column {Leave blank for auto)",
+      description: "Percentage width of the column (Leave blank for auto)",
       type: "number",
     },
     {
