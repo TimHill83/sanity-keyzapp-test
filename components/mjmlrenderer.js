@@ -116,7 +116,7 @@ class MjmlRenderer extends Component {
     this.UpdateContent();
   }
   componentDidUpdate(prevProps) {
-    if (prevProps.document.draft.content !== this.props.document.draft.content) {
+    if (prevProps.document.displayed.content !== this.props.document.displayed.content) {
       console.log("draft content changed");
       this.refresh();
     }
