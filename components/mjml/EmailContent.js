@@ -1,6 +1,7 @@
 import React from "react";
 import BlockContent from "@sanity/block-content-to-react";
 import RichImageBlock from "./RichImageBlock";
+import EmailButton from "./EmailButton";
 
 //this component stops the default block rendering behaviour of wrapping everything in a div, by using a Fragment instead
 const NoWrapper = (props) => <>{props.children}</>;
@@ -44,6 +45,7 @@ function EmailContent(props) {
         types: {
           block: BlockRenderer,
           richImage: RichImageBlock,
+          button: EmailButton,
         },
         container: NoWrapper,
         unknownType: NotFound,
