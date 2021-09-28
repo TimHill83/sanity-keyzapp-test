@@ -6,7 +6,7 @@ function EmailColumn(props) {
   return (
     <mj-column
       width={column.width ? column.width + "%" : null}
-      vertical-align={column.verticalAligment}
+      vertical-align={column.verticalAlignment}
       key={column._key}
     >
       <EmailContent content={column.content}></EmailContent>
