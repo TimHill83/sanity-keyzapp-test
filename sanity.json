@@ -13,7 +13,8 @@
     "@sanity/default-layout",
     "@sanity/default-login",
     "@sanity/desk-tool",
-    "iframe-pane"
+    "iframe-pane",
+    "media"
   ],
   "env": {
     "development": {
