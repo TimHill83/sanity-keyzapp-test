@@ -15,7 +15,7 @@ function TitleBlock(props) {
         </mj-text>
       </mj-column>
       <mj-column width="25%">
-        <RichImage image={image}></RichImage>
+        <RichImage content={image}></RichImage>
       </mj-column>
     </mj-section>
   );

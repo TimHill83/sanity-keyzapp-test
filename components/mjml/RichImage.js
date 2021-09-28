@@ -11,7 +11,7 @@ function renderMjmlImageTag(props) {
   return;
   `<mj-image src=` +
     urlFor(props.image)
-      .width(props.image.targetWidth ?? 620)
+      .width(props.content.targetWidth ?? 620)
       .format("png")
       .url() +
     `/>`;
@@ -19,9 +19,10 @@ function renderMjmlImageTag(props) {
 
 function RichImage(props) {
   return (
+    //<mj-raw>Image</mj-raw>
     <mj-image
-      src={urlFor(props.image)
-        .width(props.image.targetWidth ?? 620)
+      src={urlFor(props.content)
+        .width(props.content.targetWidth ?? 620)
         .format("png")
         .url()}
     />
