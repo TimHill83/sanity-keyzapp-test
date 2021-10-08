@@ -7,21 +7,8 @@ function urlFor(source) {
   return builder.image(source);
 }
 
-function renderMjmlImageTag(props) {
-  return;
-  `<mj-image src=` +
-    urlFor(props.image)
-      .width(props.content.targetWidth ?? 620)
-      .format("png")
-      .url() +
-    `/>`;
-}
-
 function RichImage(props) {
-  console.log("RichImage");
-  console.log(props);
   return (
-    //<mj-raw>Image</mj-raw>
     <mj-image
       src={urlFor(props)
         .width(props.targetWidth ?? 620)
