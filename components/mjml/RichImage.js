@@ -18,11 +18,13 @@ function renderMjmlImageTag(props) {
 }
 
 function RichImage(props) {
+  console.log("RichImage");
+  console.log(props);
   return (
     //<mj-raw>Image</mj-raw>
     <mj-image
-      src={urlFor(props.content)
-        .width(props.content.targetWidth ?? 620)
+      src={urlFor(props)
+        .width(props.targetWidth ?? 620)
         .format("png")
         .url()}
     />
