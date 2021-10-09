@@ -19,9 +19,11 @@ const serializers = {
       <ul>{props.children}</ul>
     </mj-text>
   ),
+  small: (props) => <mj-text mj-class="small">{props.children}</mj-text>,
+  smallCentred: (props) => <mj-text mj-class="small centred">{props.children}</mj-text>,
   richImage: RichImage,
   button: EmailButton2,
-  container: NoWrapper, //not sure if this is working
+  container: NoWrapper,
   unknownType: NotFound, //pretty sure this isn't working
 };
 
