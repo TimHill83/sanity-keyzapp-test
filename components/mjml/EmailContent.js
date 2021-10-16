@@ -24,7 +24,7 @@ const serializers = {
   richImage: RichImage,
   button: EmailButton2,
   container: NoWrapper,
-  unknownType: NotFound, //pretty sure this isn't working
+  unknownType: NotFound,
 };
 
 function EmailContent(props) {
