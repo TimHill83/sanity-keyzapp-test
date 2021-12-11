@@ -18,7 +18,7 @@ export default {
             { title: "Heading 3", value: "h3" },
             { title: "Heading 4", value: "h4" },
             { title: "Small", value: "small" },
-            { title: "Small - Centred", value: "small-centred" },
+            { title: "Small - Centred", value: "smallCentred" },
           ],
         },
         {

@@ -3,11 +3,14 @@ import InlineHtml from "./InlineHtml";
 import axios from "axios";
 import client from "part:@sanity/base/client";
 import { debounce } from "lodash";
+import ReactDOMServer from "react-dom/server";
+import MjmlEmail from "./MjmlEmail";
+import mjml2html from "mjml-browser";
 
 import { Flex, Text, Button, studioTheme, ThemeProvider } from "@sanity/ui";
 import { CopyIcon, MobileDeviceIcon, ResetIcon } from "@sanity/icons";
 
-class EmailPreview extends Component {
+class MjmlRenderer extends Component {
   state = { Mobile: false };
   htmlBoxRef = React.createRef();
   mjmlBoxRef = React.createRef();
@@ -67,18 +70,41 @@ class EmailPreview extends Component {
     }
   };
 
-  async UpdateContent() {
-    let apiOutput = "";
+  getMjml = function () {
+    let convertedHtml = ReactDOMServer.renderToStaticMarkup(
+      <MjmlEmail email={this.props.document.displayed}></MjmlEmail>
+    );
 
-    try {
-      apiOutput = await this.getHtmlAndMjmlAxios();
-      this.setState({ content: apiOutput.html, mjml: apiOutput.mjml, errors: "" });
-    } catch (error) {
-      apiOutput = "";
-      console.log(error);
+    // This regex stands &amp; within tages and replaces,
+    // but should leave it alone if it's between the tags.<>
+    const reg = /(?<=<[^<>]+)&amp;(?=[^<>]+>)/;
 
-      this.setState({ content: "", errors: error.response?.data ? error.response.data.message : error.message });
-    }
+    const cleanedHtml = convertedHtml.replace(reg, "&");
+    return cleanedHtml;
+  };
+
+  getHtml = function (input) {
+    let result = mjml2html(input);
+    console.log(result.errors);
+    return result;
+  };
+
+  UpdateContent() {
+    let mj = this.getMjml();
+    let ht = this.getHtml(mj);
+    this.setState({ mjml: mj, content: ht.html });
+
+    // let apiOut put = ";
+
+    // try {
+    //   apiOutput = await this.getHtmlAndMjmlAxios();
+    //   this.setState({ content: apiOutput.html, mjml: apiOutput.mjml, errors: "" });
+    // } catch (error) {
+    //   apiOutput = "";
+    //   console.log(error);
+
+    //   this.setState({ content: "", errors: error.response?.data ? error.response.data.message : error.message });
+    // }
   }
 
   refresh = debounce(() => {
@@ -86,11 +112,11 @@ class EmailPreview extends Component {
     this.UpdateContent();
   }, 1000);
 
-  async componentDidMount() {
-    await this.UpdateContent();
+  componentDidMount() {
+    this.UpdateContent();
   }
   componentDidUpdate(prevProps) {
-    if (prevProps.document.draft.content !== this.props.document.draft.content) {
+    if (prevProps.document.displayed.content !== this.props.document.displayed.content) {
       console.log("draft content changed");
       this.refresh();
     }
@@ -185,4 +211,4 @@ class EmailPreview extends Component {
   }
 }
 
-export default EmailPreview;
+export default MjmlRenderer;
