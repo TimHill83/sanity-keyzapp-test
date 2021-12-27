@@ -1,3 +1,5 @@
+import ReferencedBy from "../../components/inputs/ReferencedBy"; //using recipe from https://www.sanity.io/schemas/list-referring-documents-backlinks-in-sanity-1a8ada64
+
 export default {
   name: "term",
   type: "document",
@@ -39,6 +41,20 @@ export default {
           },
         },
       ],
+    },
+    {
+      //using recipe from https://www.sanity.io/schemas/list-referring-documents-backlinks-in-sanity-1a8ada64
+      name: "referringDocuments",
+      title: "Referenced By",
+      type: "array",
+      of: [{ type: "term" }],
+      readOnly: true,
+      inputComponent: ReferencedBy,
+      // Optional: You can read this option in ReferencedBy.tsx to filter the list
+      // of backlinks by document type.
+      // options: {
+      //   referenceType: 'course',
+      // },
     },
   ],
 };
