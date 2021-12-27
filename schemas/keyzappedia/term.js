@@ -11,6 +11,15 @@ export default {
       type: "string",
     },
     {
+      name: "slug",
+      title: "Slug",
+      type: "slug",
+      validation: (Rule) => Rule.required(),
+      options: {
+        source: "canonicalName",
+      },
+    },
+    {
       name: "internalDescription",
       title: "Internal Description",
       description: "What the term means",
