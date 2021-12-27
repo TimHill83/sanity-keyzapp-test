@@ -17,6 +17,26 @@ export default {
         {
           type: "block",
           styles: [{ title: "Normal", value: "normal" }],
+          marks: {
+            annotations: [
+              {
+                name: "relatedTerm",
+                title: "Related Term",
+                type: "object",
+                fields: [
+                  {
+                    name: "reference",
+                    type: "reference",
+                    to: [
+                      {
+                        type: "term",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
         },
       ],
     },
