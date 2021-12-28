@@ -14,7 +14,8 @@
     "@sanity/default-login",
     "@sanity/desk-tool",
     "iframe-pane",
-    "media"
+    "media",
+    "graph-view"
   ],
   "env": {
     "development": {
