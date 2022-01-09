@@ -13,6 +13,7 @@ export default {
     {
       name: "slug",
       title: "Slug",
+      description: "A unique identifier that's used in the URL",
       type: "slug",
       validation: (Rule) => Rule.required(),
       options: {
@@ -21,8 +22,8 @@ export default {
     },
     {
       name: "internalDescription",
-      title: "Internal Description",
-      description: "What the term means",
+      title: "Definition",
+      description: "What the term means.  Keep it to around 2 sentences.",
       type: "array",
       of: [
         {
@@ -33,23 +34,18 @@ export default {
               {
                 name: "relatedTerm",
                 title: "Related Term",
-                type: "object",
-                fields: [
-                  {
-                    name: "reference",
-                    type: "reference",
-                    to: [
-                      {
-                        type: "term",
-                      },
-                    ],
-                  },
-                ],
+                type: "internalLink",
               },
             ],
           },
         },
       ],
+    },
+    {
+      name: "article",
+      title: "Main Article Text",
+      description: "Add an explanatory article",
+      type: "articleText",
     },
     {
       //using recipe from https://www.sanity.io/schemas/list-referring-documents-backlinks-in-sanity-1a8ada64
