@@ -1,4 +1,5 @@
 import ReferencedBy from "../../components/inputs/ReferencedBy"; //using recipe from https://www.sanity.io/schemas/list-referring-documents-backlinks-in-sanity-1a8ada64
+import articleText from "./fields/articleText";
 
 export default {
   name: "term",
@@ -42,10 +43,8 @@ export default {
       ],
     },
     {
-      name: "article",
-      title: "Main Article Text",
-      description: "Add an explanatory article",
-      type: "articleText",
+      ...articleText,
+      description: "An explanatory article",
     },
     {
       //using recipe from https://www.sanity.io/schemas/list-referring-documents-backlinks-in-sanity-1a8ada64
