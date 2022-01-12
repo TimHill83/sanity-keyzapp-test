@@ -12,8 +12,14 @@ export default {
             title: "Related Term",
             type: "internalLink",
           },
+          {
+            name: "externalLink",
+            title: "Link",
+            type: "externalLink",
+          },
         ],
       },
     },
+    { type: "baseImage" },
   ],
 };

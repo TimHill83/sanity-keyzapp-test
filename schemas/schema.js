@@ -14,6 +14,8 @@ import emailSection from "./emailSection";
 import richImage from "./richImage";
 import term from "./keyzappedia/term";
 import internalLink from "./internalLink";
+import externalLink from "./externalLink";
+import baseImage from "./baseImage";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -32,7 +34,9 @@ export default createSchema({
     emailColumn,
     emailSection,
     richImage,
+    baseImage,
     internalLink,
+    externalLink,
     term,
   ]),
 });

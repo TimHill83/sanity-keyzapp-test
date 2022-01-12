@@ -1,20 +1,9 @@
-//TODO: Inherit richImage from baseImage?
-
 export default {
-  name: "richImage",
-  title: "Rich Image",
+  name: "baseImage",
+  title: "Image",
   type: "image",
   options: { hotspot: true },
   fields: [
-    {
-      name: "targetWidth",
-      title: "Target Width",
-      description: "Specify a target output width for the image",
-      type: "number",
-      options: {
-        isHighlighted: true,
-      },
-    },
     {
       name: "altText",
       title: "Alternative Text",
