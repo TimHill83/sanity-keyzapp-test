@@ -5,11 +5,21 @@ export default {
   name: "term",
   type: "document",
   title: "Term",
+  fieldsets: [
+    {
+      name: "termdata",
+      options: {
+        columns: 2,
+      },
+    },
+  ],
   fields: [
     {
       name: "canonicalName",
       title: "Term",
+      description: "The main (canonical) name for the term",
       type: "string",
+      fieldset: "termdata",
     },
     {
       name: "slug",
@@ -20,7 +30,16 @@ export default {
       options: {
         source: "canonicalName",
       },
+      fieldset: "termdata",
     },
+    {
+      name: "summaryImage",
+      title: "Logo or Summary Image",
+      type: "image",
+      options: { hotspot: true },
+      fieldset: "termdata",
+    },
+
     {
       name: "internalDescription",
       title: "Definition",
@@ -41,6 +60,7 @@ export default {
           },
         },
       ],
+      fieldset: "termdata",
     },
     {
       ...articleText,
