@@ -1,5 +1,6 @@
 import ReferencedBy from "../../components/inputs/ReferencedBy"; //using recipe from https://www.sanity.io/schemas/list-referring-documents-backlinks-in-sanity-1a8ada64
 import articleText from "./fields/articleText";
+import linksList from "./fields/linksList";
 
 export default {
   name: "term",
@@ -48,7 +49,7 @@ export default {
       of: [
         {
           type: "block",
-          styles: [{ title: "Normal", value: "normal" }],
+          styles: [],
           marks: {
             annotations: [
               {
@@ -66,6 +67,7 @@ export default {
       ...articleText,
       description: "An explanatory article",
     },
+    linksList,
     {
       //using recipe from https://www.sanity.io/schemas/list-referring-documents-backlinks-in-sanity-1a8ada64
       name: "referringDocuments",
