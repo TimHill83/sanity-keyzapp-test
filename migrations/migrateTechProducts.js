@@ -1,12 +1,12 @@
 import sanityClient from "part:@sanity/base/client";
-const client = sanityClient.withConfig({ apiVersion: "2021-10-21", dataset: "production" });
+const client = sanityClient.withConfig({ apiVersion: "2021-10-21", dataset: "production", useCdn: false });
 
 const OLD_TYPE = "term";
-const NEW_TYPE = "company";
+const NEW_TYPE = "technologyProduct";
 
 const fetchDocuments = () =>
   client.fetch(
-    `*[_type == $oldType][slug.current in ["infosysco","zoopla-property-group","zapp-innovation-ltd" ]][0...10] {..., "incomingReferences": *[references(^._id)]{...}}`,
+    `*[_type == $oldType][slug.current in ["alto","reapit","zoho-crm" ]][0...10] {..., "incomingReferences": *[references(^._id)]{...}}`,
     {
       oldType: OLD_TYPE,
     }
