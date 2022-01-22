@@ -17,6 +17,8 @@ import internalLink from "./internalLink";
 import externalLink from "./externalLink";
 import baseImage from "./baseImage";
 import company from "./keyzappedia/company";
+import technologyProduct from "./keyzappedia/technologyProduct";
+import industry from "./keyzappedia/industry";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -40,5 +42,7 @@ export default createSchema({
     externalLink,
     term,
     company,
+    technologyProduct,
+    industry,
   ]),
 });

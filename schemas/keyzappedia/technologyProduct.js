@@ -1,13 +1,22 @@
 import ReferencedBy from "../../components/inputs/ReferencedBy"; //using recipe from https://www.sanity.io/schemas/list-referring-documents-backlinks-in-sanity-1a8ada64
-import articleText from "./fields/articleText";
 import linksList from "./fields/linksList";
 import { fields, fieldgroups } from "./fields/corefields";
 
 export default {
-  name: "term",
+  name: "technologyProduct",
   type: "document",
-  title: "Term",
-  groups: fieldgroups,
+  title: "Technology Product",
+  groups: [
+    ...fieldgroups,
+    {
+      name: "product",
+      title: "Product",
+    },
+    {
+      name: "references",
+      title: "References",
+    },
+  ],
   fieldsets: [
     {
       name: "termdata",
@@ -19,7 +28,8 @@ export default {
   fields: [
     {
       ...fields.name,
-      description: "The main (canonical) name for the term",
+      title: "Product Name",
+      description: "The Company's Name",
       fieldset: "termdata",
     },
     fields.synonyms,
@@ -30,6 +40,21 @@ export default {
     {
       ...linksList,
       group: "links",
+    },
+    {
+      name: "madeBy",
+      title: "Made By",
+      type: "reference",
+      to: [{ type: "company" }],
+      group: "product",
+    },
+    {
+      name: "targetIndustries",
+      title: "Target Industry Sectors",
+      type: "array",
+      of: [{ title: "Industry", type: "reference", to: [{ type: "industry" }] }],
+
+      group: "product",
     },
     fields.referringDocuments,
   ],
