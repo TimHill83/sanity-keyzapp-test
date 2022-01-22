@@ -6,6 +6,22 @@ export default {
   name: "term",
   type: "document",
   title: "Term",
+  groups: [
+    {
+      name: "core",
+      title: "Core Data",
+      default: true,
+    },
+
+    {
+      name: "synonyms",
+      title: "Synonyms",
+    },
+    {
+      name: "links",
+      title: "Links",
+    },
+  ],
   fieldsets: [
     {
       name: "termdata",
@@ -21,6 +37,47 @@ export default {
       description: "The main (canonical) name for the term",
       type: "string",
       fieldset: "termdata",
+      group: "core",
+    },
+    {
+      name: "synonyms",
+      title: "Synonyms",
+      description: "Other names for the term",
+      type: "array",
+      group: "synonyms",
+      of: [
+        {
+          type: "object",
+          fields: [
+            {
+              type: "string",
+              name: "synonym",
+            },
+            {
+              type: "array",
+              name: "synonymNotes",
+              of: [
+                {
+                  type: "block",
+                  styles: [],
+                  marks: {
+                    annotations: [
+                      {
+                        name: "relatedTerm",
+                        title: "Related Term",
+                        type: "internalLink",
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      ],
+      options: {
+        layout: "tags",
+      },
     },
     {
       name: "slug",
@@ -32,6 +89,7 @@ export default {
         source: "canonicalName",
       },
       fieldset: "termdata",
+      group: "core",
     },
     {
       name: "summaryImage",
@@ -39,8 +97,8 @@ export default {
       type: "image",
       options: { hotspot: true },
       fieldset: "termdata",
+      group: "core",
     },
-
     {
       name: "internalDescription",
       title: "Definition",
@@ -62,12 +120,17 @@ export default {
         },
       ],
       fieldset: "termdata",
+      group: "core",
     },
     {
       ...articleText,
       description: "An explanatory article",
+      group: "core",
     },
-    linksList,
+    {
+      ...linksList,
+      group: "links",
+    },
     {
       //using recipe from https://www.sanity.io/schemas/list-referring-documents-backlinks-in-sanity-1a8ada64
       name: "referringDocuments",
