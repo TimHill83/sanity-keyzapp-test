@@ -12,6 +12,7 @@ export default {
         {
           type: "term",
         },
+        { type: "company" },
       ],
     },
   ],

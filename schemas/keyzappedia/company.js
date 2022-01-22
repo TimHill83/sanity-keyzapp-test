@@ -4,9 +4,9 @@ import linksList from "./fields/linksList";
 import { fields, fieldgroups } from "./fields/corefields";
 
 export default {
-  name: "term",
+  name: "company",
   type: "document",
-  title: "Term",
+  title: "Company",
   groups: fieldgroups,
   fieldsets: [
     {
@@ -19,7 +19,8 @@ export default {
   fields: [
     {
       ...fields.name,
-      description: "The main (canonical) name for the term",
+      title: "Company Name",
+      description: "The Company's Name",
       fieldset: "termdata",
     },
     fields.synonyms,
