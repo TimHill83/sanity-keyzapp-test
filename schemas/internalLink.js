@@ -13,6 +13,8 @@ export default {
           type: "term",
         },
         { type: "company" },
+        { type: "technologyProduct" },
+        { type: "industry" },
       ],
     },
   ],
