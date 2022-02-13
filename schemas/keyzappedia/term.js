@@ -1,5 +1,3 @@
-import ReferencedBy from "../../components/inputs/ReferencedBy"; //using recipe from https://www.sanity.io/schemas/list-referring-documents-backlinks-in-sanity-1a8ada64
-import articleText from "./fields/articleText";
 import linksList from "./fields/linksList";
 import { fields, fieldgroups } from "./fields/corefields";
 

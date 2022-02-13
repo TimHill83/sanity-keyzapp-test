@@ -6,10 +6,9 @@ const fieldgroups = [
     title: "Core Data",
     default: true,
   },
-
   {
-    name: "synonyms",
-    title: "Synonyms",
+    name: "article",
+    title: "Article",
   },
   {
     name: "links",
@@ -27,7 +26,7 @@ const fields = {
     title: "Synonyms",
     description: "Other names for the term",
     type: "array",
-    group: "synonyms",
+    group: "core",
     of: [
       {
         type: "object",
@@ -105,10 +104,19 @@ const fields = {
     fieldset: "termdata",
     group: "core",
   },
+  website: {
+    name: "website",
+    title: "Main Website",
+    type: "url",
+    validation: (Rule) =>
+      Rule.uri({
+        scheme: ["http", "https"],
+      }),
+  },
   articleText: {
     ...articleText,
     description: "An explanatory article",
-    group: "core",
+    group: "article",
   },
   referringDocuments: {
     //using recipe from https://www.sanity.io/schemas/list-referring-documents-backlinks-in-sanity-1a8ada64

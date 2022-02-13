@@ -1,4 +1,3 @@
-import ReferencedBy from "../../components/inputs/ReferencedBy"; //using recipe from https://www.sanity.io/schemas/list-referring-documents-backlinks-in-sanity-1a8ada64
 import linksList from "./fields/linksList";
 import { fields, fieldgroups } from "./fields/corefields";
 
@@ -35,11 +34,28 @@ export default {
     fields.synonyms,
     fields.slug,
     fields.summaryImage,
+
     fields.internalDescription,
     fields.articleText,
     {
       ...linksList,
       group: "links",
+    },
+    {
+      name: "relationshipToKeyzappProduct",
+      title: "Relationship to Keyzapp",
+      type: "string",
+      options: {
+        list: [
+          { title: "Tool we use", value: "usedAtKeyzapp" },
+          { title: "Integrated with Keyzapp", value: "integration" },
+          { title: "Potential to Integrate", value: "potentialIntegration" },
+          { title: "Competitor", value: "competitor" },
+          { title: "Competitor and Partner", value: "competitorPartner" },
+          { title: "Used by our target market", value: "ecosystem" },
+        ],
+      },
+      group: "product",
     },
     {
       name: "madeBy",

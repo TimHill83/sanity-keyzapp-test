@@ -5,7 +5,7 @@ export default {
   name: "company",
   type: "document",
   title: "Company",
-  groups: fieldgroups,
+  groups: [...fieldgroups, { name: "company", title: "Company" }],
   fieldsets: [
     {
       name: "termdata",
@@ -26,6 +26,7 @@ export default {
     fields.summaryImage,
     fields.internalDescription,
     fields.articleText,
+    { ...fields.website, group: "links" },
     {
       ...linksList,
       group: "links",
@@ -35,6 +36,24 @@ export default {
       title: "Parent Company",
       type: "reference",
       to: [{ type: "company" }],
+      group: "company",
+    },
+    {
+      name: "relationshipToKeyzappCompany",
+      title: "Relationship to Keyzapp",
+      type: "string",
+      options: {
+        list: [
+          { title: "Supplier", value: "supplier" },
+          { title: "Potential Partner", value: "potentialPartner" },
+          { title: "Commerical Partner", value: "commercialPartner" },
+          { title: "Integration Partner", value: "integrationPartner" },
+          { title: "Competitor", value: "competitor" },
+          { title: "Competitor and Partner", value: "competitorPartner" },
+          { title: "Operates in our Ecosystem", value: "ecosystem" },
+        ],
+      },
+      group: "company",
     },
     fields.referringDocuments,
   ],
