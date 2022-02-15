@@ -2,9 +2,10 @@ import linksList from "./fields/linksList";
 import { fields, fieldGroupList } from "./fields/corefields";
 
 export default {
-  name: "term",
+  name: "bestPractice",
   type: "document",
-  title: "Term or Concept",
+  title: "Best Practice",
+  description: "A Best Practice is a set of recommendations for working most effectively",
   groups: fieldGroupList(), //fieldgroups,
   fieldsets: [
     {
@@ -17,9 +18,25 @@ export default {
   fields: [
     {
       ...fields.name,
-      description: "The main (canonical) name for the term",
+      title: "Standard Name",
+      description: "The name of the standard",
       fieldset: "termdata",
     },
+    {
+      name: "relatesTo",
+      title: "Relates To",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: [{ type: "term" }, { type: "company" }, { type: "industry" }, { type: "technologyProduct" }],
+        },
+      ],
+      options: {
+        layout: "tags",
+      },
+    },
+
     fields.synonyms,
     fields.slug,
     fields.summaryImage,

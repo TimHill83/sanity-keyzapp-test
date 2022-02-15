@@ -1,11 +1,11 @@
 import linksList from "./fields/linksList";
-import { fields, fieldgroups } from "./fields/corefields";
+import { fields, fieldGroupList } from "./fields/corefields";
 
 export default {
   name: "company",
   type: "document",
   title: "Company",
-  groups: [...fieldgroups, { name: "company", title: "Company" }],
+  groups: fieldGroupList([{ name: "company", title: "Company" }]),
   fieldsets: [
     {
       name: "termdata",

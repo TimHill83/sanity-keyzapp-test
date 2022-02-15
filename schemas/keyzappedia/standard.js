@@ -2,10 +2,11 @@ import linksList from "./fields/linksList";
 import { fields, fieldGroupList } from "./fields/corefields";
 
 export default {
-  name: "industry",
+  name: "standard",
   type: "document",
-  title: "Industry Sector",
-  groups: fieldGroupList(),
+  title: "Standard",
+  description: "A Standard is set of expections that we are expected to observe",
+  groups: fieldGroupList(), //fieldgroups,
   fieldsets: [
     {
       name: "termdata",
@@ -17,7 +18,8 @@ export default {
   fields: [
     {
       ...fields.name,
-      description: "The name of the industry",
+      title: "Standard Name",
+      description: "The name of the standard",
       fieldset: "termdata",
     },
     fields.synonyms,
@@ -28,13 +30,6 @@ export default {
     {
       ...linksList,
       group: "links",
-    },
-    {
-      name: "parentIndustry",
-      title: "Parent Industry Sector",
-      type: "reference",
-      to: [{ type: "industry" }],
-      group: "core",
     },
     fields.referringDocuments,
   ],

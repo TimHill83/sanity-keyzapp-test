@@ -1,21 +1,16 @@
 import linksList from "./fields/linksList";
-import { fields, fieldgroups } from "./fields/corefields";
+import { fields, fieldGroupList } from "./fields/corefields";
 
 export default {
   name: "technologyProduct",
   type: "document",
   title: "Technology Product",
-  groups: [
-    ...fieldgroups,
+  groups: fieldGroupList([
     {
       name: "product",
       title: "Product",
     },
-    {
-      name: "references",
-      title: "References",
-    },
-  ],
+  ]),
   fieldsets: [
     {
       name: "termdata",
@@ -72,6 +67,6 @@ export default {
 
       group: "product",
     },
-    fields.referringDocuments,
+    { ...fields.referringDocuments, group: "references" },
   ],
 };

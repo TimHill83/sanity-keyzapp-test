@@ -1,5 +1,7 @@
 import articleText from "./articleText";
 import ReferencedBy from "../../../components/inputs/ReferencedBy";
+import { array } from "prop-types";
+import { initial } from "lodash";
 const fieldgroups = [
   {
     name: "core",
@@ -15,6 +17,28 @@ const fieldgroups = [
     title: "Links",
   },
 ];
+
+/** Retuns an array of field groups for use in Sanity document schemas */
+function fieldGroupList(middleGroup?:Array<any>) : Array<any> {
+  let initialGroup = [{
+    name: "core",
+    title: "Core Data",
+    default: true,
+  },
+  {
+    name: "article",
+    title: "Article",
+    }]; 
+  let endGroup = [ {
+    name: "links",
+    title: "Links",
+  },{
+    name: "references",
+    title: "References",
+  }];
+  return initialGroup.concat(middleGroup ? middleGroup : [], endGroup)
+
+}
 const fields = {
   name: {
     name: "canonicalName",
@@ -126,6 +150,7 @@ const fields = {
     of: [{ type: "term" }],
     readOnly: true,
     inputComponent: ReferencedBy,
+    group: "references"
     // Optional: You can read this option in ReferencedBy.tsx to filter the list
     // of backlinks by document type.
     // options: {
@@ -134,4 +159,4 @@ const fields = {
   },
 };
 
-export { fields, fieldgroups };
+export { fields, fieldgroups, fieldGroupList };
