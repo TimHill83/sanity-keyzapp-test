@@ -21,6 +21,7 @@ import technologyProduct from "./keyzappedia/technologyProduct";
 import industry from "./keyzappedia/industry";
 import standard from "./keyzappedia/standard";
 import bestPractice from "./keyzappedia/bestPractice";
+import article from "./keyzappedia/article";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -45,6 +46,7 @@ export default createSchema({
     standard,
     bestPractice,
     term,
+    article,
     company,
     technologyProduct,
     industry,
