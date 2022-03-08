@@ -1,10 +1,12 @@
 import linksList from "./fields/linksList";
 import { fields, fieldGroupList } from "./fields/corefields";
+import { RiNodeTree } from "react-icons/ri";
 
 export default {
   name: "industry",
   type: "document",
   title: "Industry Sector",
+  icon: RiNodeTree,
   groups: fieldGroupList(),
   fieldsets: [
     {

@@ -1,11 +1,13 @@
 import linksList from "./fields/linksList";
 import { fields, fieldGroupList } from "./fields/corefields";
+import { RiArticleLine } from "react-icons/ri";
 
 export default {
   name: "article",
   type: "document",
   title: "Article",
   description: "A general purpose article about something in our business",
+  icon: RiArticleLine,
   groups: fieldGroupList(), //fieldgroups,
   fieldsets: [
     {

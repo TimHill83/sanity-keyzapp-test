@@ -1,11 +1,13 @@
 import linksList from "./fields/linksList";
 import { fields, fieldGroupList } from "./fields/corefields";
+import { GoMortarBoard } from "react-icons/go";
 
 export default {
   name: "bestPractice",
   type: "document",
   title: "Best Practice",
   description: "A Best Practice is a set of recommendations for working most effectively",
+  icon: GoMortarBoard,
   groups: fieldGroupList(), //fieldgroups,
   fieldsets: [
     {

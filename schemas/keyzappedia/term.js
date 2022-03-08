@@ -1,11 +1,13 @@
 import linksList from "./fields/linksList";
 import { fields, fieldGroupList } from "./fields/corefields";
-
+import { HiOutlineDocumentText } from "react-icons/hi";
 export default {
   name: "term",
   type: "document",
   title: "Term or Concept",
+  icon: HiOutlineDocumentText,
   groups: fieldGroupList(), //fieldgroups,
+
   fieldsets: [
     {
       name: "termdata",
@@ -31,4 +33,15 @@ export default {
     },
     fields.referringDocuments,
   ],
+  // preview: {
+  //   select: {
+  //     _key: "_key",
+  //     title: "canonicalName",
+  //     type: "_type",
+  //   },
+  //   prepare({ _key, title, type }) {
+  //     return { _key, title, type };
+  //   },
+  //   component: TermPreview,
+  // },
 };

@@ -1,10 +1,12 @@
 import linksList from "./fields/linksList";
 import { fields, fieldGroupList } from "./fields/corefields";
+import { HiOutlineDesktopComputer } from "react-icons/hi";
 
 export default {
   name: "technologyProduct",
   type: "document",
   title: "Technology Product",
+  icon: HiOutlineDesktopComputer,
   groups: fieldGroupList([
     {
       name: "product",
