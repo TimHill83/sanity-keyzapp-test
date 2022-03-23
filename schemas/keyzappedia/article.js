@@ -42,7 +42,10 @@ export default {
     fields.synonyms,
     fields.slug,
     fields.summaryImage,
-    fields.internalDescription,
+    {
+      ...fields.internalDescription,
+      group: ["core", "article"],
+    },
     fields.articleText,
     {
       ...linksList,

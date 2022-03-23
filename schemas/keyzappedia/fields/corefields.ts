@@ -101,6 +101,13 @@ const fields = {
     name: "summaryImage",
     title: "Logo or Summary Image",
     type: "image",
+    fields: [
+      {
+        name: "altText",
+        title: "Alt Text",
+        type: "string"
+      }
+    ],
     options: { hotspot: true },
     fieldset: "termdata",
     group: "core",
@@ -125,7 +132,6 @@ const fields = {
         },
       },
     ],
-    fieldset: "termdata",
     group: "core",
   },
   website: {
