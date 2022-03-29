@@ -1,5 +1,3 @@
-import { NoteStyle, WarningStyle, TipStyle } from "../../../components/previews/articleText";
-
 export default {
   name: "articleText",
   title: "Article",
@@ -15,22 +13,6 @@ export default {
         { title: "Heading 4", value: "h4" },
         { title: "Heading 5", value: "h5" },
         { title: "Heading 6", value: "h6" },
-        {
-          title: "Note",
-          value: "note",
-          blockEditor: { render: NoteStyle },
-        },
-        {
-          title: "Tip",
-          value: "tip",
-          blockEditor: { render: TipStyle },
-        },
-        {
-          title: "Warning",
-          value: "warning",
-          blockEditor: { render: WarningStyle },
-        },
-
         { title: "Quote", value: "blockquote" },
       ],
       marks: {
