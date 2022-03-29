@@ -22,6 +22,7 @@ import industry from "./keyzappedia/industry";
 import standard from "./keyzappedia/standard";
 import bestPractice from "./keyzappedia/bestPractice";
 import article from "./keyzappedia/article";
+import highlightText from "./keyzappedia/highlightText";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -50,5 +51,6 @@ export default createSchema({
     company,
     technologyProduct,
     industry,
+    highlightText,
   ]),
 });
