@@ -1,4 +1,5 @@
 import { FiExternalLink } from "react-icons/fi";
+import keyzappediaTypes from "./keyzappedia/keyzappediaTypes";
 export default {
   name: "internalLink",
   title: "Internal Link",
@@ -8,17 +9,7 @@ export default {
     {
       name: "reference",
       type: "reference",
-      to: [
-        {
-          type: "term",
-        },
-        { type: "company" },
-        { type: "technologyProduct" },
-        { type: "industry" },
-        { type: "article" },
-        { type: "bestPractice" },
-        { type: "standard" },
-      ],
+      to: keyzappediaTypes,
     },
   ],
 };
