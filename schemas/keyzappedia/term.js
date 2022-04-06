@@ -19,6 +19,7 @@ export default {
   fields: [
     {
       ...fields.name,
+      title: "Canonical Name",
       description: "The main (canonical) name for the term",
       fieldset: "termdata",
     },

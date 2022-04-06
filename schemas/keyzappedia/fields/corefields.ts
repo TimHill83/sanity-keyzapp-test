@@ -41,7 +41,7 @@ function fieldGroupList(middleGroup?:Array<any>) : Array<any> {
 }
 const fields = {
   name: {
-    name: "canonicalName",
+    name: "title",
     type: "string",
     group: "core",
   },
