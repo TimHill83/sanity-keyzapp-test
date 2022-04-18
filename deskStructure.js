@@ -26,7 +26,35 @@ export default () =>
   S.list()
     .title("Content")
     .items([
-      ...S.documentTypeListItems().filter((item) => !["media.tag", "emailTemplate"].includes(item.getId())),
+      ...S.documentTypeListItems().filter(
+        (item) => !["media.tag", "emailTemplate", "technologyProduct"].includes(item.getId())
+      ),
+      S.listItem()
+        .title("Products & Services")
+        .child(
+          S.list()
+            .title("Products & Services")
+            .items([
+              S.listItem()
+                .title("By Relationship To Keyzapp")
+                .child(
+                  S.list()
+                    .title("Relationship to Keyzapp")
+                    .items([
+                      S.listItem()
+                        .title("Tool we use")
+                        .child(
+                          S.documentList()
+                            .title("Products by Relationship")
+                            .filter(`_type == 'technologyProduct' && relationshipToKeyzappProduct == "usedAtKeyzapp"`)
+                        ),
+                      S.listItem().title("Integrated with Keyzapp").child(),
+                    ])
+                ),
+              S.listItem().title("By Company"),
+              S.listItem().title("All Products and Services").child(createSuperPane("technologyProduct", S)),
+            ])
+        ),
       S.divider(),
       S.listItem()
         .title("Email Template Manager")
