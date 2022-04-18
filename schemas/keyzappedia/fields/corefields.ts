@@ -92,7 +92,7 @@ const fields = {
     type: "slug",
     validation: (Rule) => Rule.required(),
     options: {
-      source: "canonicalName",
+      source: "title",
     },
     fieldset: "termdata",
     group: "core",

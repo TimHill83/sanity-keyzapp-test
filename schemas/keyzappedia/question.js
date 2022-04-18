@@ -11,16 +11,13 @@ export default {
   groups: fieldGroupList(),
   fields: [
     {
-      name: "question",
-      type: "string",
       title: "Question",
-      group: "core",
+      ...fields.name,
     },
+
     {
-      name: "answer",
       title: "Answer",
-      ...basicText,
-      group: "core",
+      ...fields.internalDescription,
     },
     {
       name: "relatedTo",
