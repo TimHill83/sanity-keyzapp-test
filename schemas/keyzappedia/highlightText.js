@@ -50,7 +50,7 @@ function highlightText(props) {
       return null;
     }
     const TheIcon = icon;
-    return <TheIcon {...props} />;
+    return <TheIcon style={props.style} />;
   };
 
   return (
