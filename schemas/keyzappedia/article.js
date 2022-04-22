@@ -14,16 +14,34 @@ export default {
       name: "termdata",
       options: {
         columns: 2,
+        hidden: ({ document }) => {
+          document?.linkedToItem;
+        },
       },
     },
   ],
   fields: [
     {
-      ...fields.name,
-      title: "Title",
-      description: "The article tiutle",
-      fieldset: "termdata",
+      title: "Linked to another item?",
+      name: "linkedToItem",
+      type: "boolean",
+      description: "Is this article part of another item, or should it be read by itself?",
     },
+    { ...fields.name, title: "Title", description: "The article title", fieldset: "termdata" },
+    {
+      title: "Content",
+      name: "content",
+      description: "The content of the article",
+      type: "array",
+      of: [
+        { type: "articleText" },
+        // {
+        //   type: "highlightText",
+        // },
+      ],
+      group: "core",
+    },
+
     {
       name: "relatesTo",
       title: "Relates To",
