@@ -35,9 +35,9 @@ export default {
       type: "array",
       of: [
         { type: "articleText" },
-        // {
-        //   type: "highlightText",
-        // },
+        {
+          type: "highlightText",
+        },
       ],
       group: "core",
     },
