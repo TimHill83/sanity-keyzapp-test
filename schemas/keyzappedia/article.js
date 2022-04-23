@@ -12,11 +12,15 @@ export default {
   fieldsets: [
     {
       name: "termdata",
+      title: "Basic information",
+      hidden: ({ document }) => {
+        return document?.linkedToItem;
+      },
+
       options: {
         columns: 2,
-        hidden: ({ document }) => {
-          document?.linkedToItem;
-        },
+        collapsible: true,
+        collapsed: false,
       },
     },
   ],
@@ -25,9 +29,24 @@ export default {
       title: "Linked to another item?",
       name: "linkedToItem",
       type: "boolean",
-      description: "Is this article part of another item, or should it be read by itself?",
+      description:
+        "Is this article part of another item, or should it be read by itself?",
+      group: "core",
     },
-    { ...fields.name, title: "Title", description: "The article title", fieldset: "termdata" },
+
+    {
+      ...fields.name,
+      title: "Title",
+      description: "The article title",
+      fieldset: "termdata",
+      validation: (Rule) =>
+        Rule.custom((value, context) => {
+          if (!value && !context.document.linkedToItem) {
+            return "A title is required for standalone articles";
+          }
+          return true;
+        }),
+    },
     {
       title: "Content",
       name: "content",
@@ -40,6 +59,9 @@ export default {
         },
       ],
       group: "core",
+      options: {
+        editModal: "fullscreen",
+      },
     },
 
     {
@@ -49,26 +71,74 @@ export default {
       of: [
         {
           type: "reference",
-          to: [{ type: "term" }, { type: "company" }, { type: "industry" }, { type: "technologyProduct" }],
+          to: [
+            { type: "term" },
+            { type: "company" },
+            { type: "industry" },
+            { type: "technologyProduct" },
+          ],
         },
       ],
+      hidden: ({ document }) => {
+        return document?.linkedToItem;
+      },
       options: {
         layout: "tags",
       },
     },
+    {
+      ...fields.synonyms,
+      hidden: ({ document }) => {
+        return document?.linkedToItem;
+      },
+    },
+    {
+      ...fields.slug,
+      // hidden: ({ document }) => {
+      //   return document?.linkedToItem;
+      // },
+      validation: (Rule) =>
+        Rule.custom((value, context) => {
+          if (!value && !context.document.linkedToItem) {
+            return "A slug is required for standalone articles";
+          }
+          return true;
+        }),
+    },
 
-    fields.synonyms,
-    fields.slug,
-    fields.summaryImage,
+    {
+      ...fields.summaryImage,
+      hidden: ({ document }) => {
+        return document?.linkedToItem;
+      },
+    },
     {
       ...fields.internalDescription,
       group: ["core", "article"],
+      hidden: ({ document }) => {
+        return document?.linkedToItem;
+      },
     },
-    fields.articleText,
+    {
+      ...fields.articleText,
+      hidden: ({ document }) => {
+        return document?.linkedToItem;
+      },
+    },
     {
       ...linksList,
       group: "links",
+      hidden: ({ document }) => {
+        return document?.linkedToItem;
+      },
     },
     fields.referringDocuments,
   ],
+  validation: (Rule) =>
+    Rule.custom((fields) => {
+      if (!fields.linkedToItem && !fields.title) {
+        return "Articles not for specific items must have a title";
+      }
+      return true;
+    }),
 };

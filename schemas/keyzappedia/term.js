@@ -23,6 +23,12 @@ export default {
       description: "The main (canonical) name for the term",
       fieldset: "termdata",
     },
+    {
+      name: "article",
+      type: "reference",
+      to: [{ type: "article" }],
+      group: "core",
+    },
     fields.synonyms,
     fields.slug,
     fields.summaryImage,
