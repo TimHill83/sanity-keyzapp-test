@@ -9,13 +9,19 @@ import technologyProduct from "./schemas/keyzappedia/technologyProduct";
 
 const relationshipList = (type, fieldName, listTitle) => {
   const testField = type.fields.filter((field) => field.name === fieldName)[0];
+
   const theListTitle = listTitle ?? testField.title ?? testField.name;
+
   if (testField.type === "string" && testField.options.list.length > 0) {
     let structure = [];
     testField.options.list.forEach((option) => {
       const filter = `_type == '${type.name}' && ${fieldName} == '${option.value}'`;
       //console.log(filter);
-      structure.push(S.listItem().title(option.title).child(S.documentList().title(option.title).filter(filter)));
+      structure.push(
+        S.listItem()
+          .title(option.title)
+          .child(S.documentList().title(option.title).filter(filter))
+      );
     });
     return S.list().title(theListTitle).items(structure);
   }
@@ -44,7 +50,10 @@ export default () =>
     .title("Content")
     .items([
       ...S.documentTypeListItems().filter(
-        (item) => !["media.tag", "emailTemplate", "technologyProduct"].includes(item.getId())
+        (item) =>
+          !["media.tag", "emailTemplate", "technologyProduct"].includes(
+            item.getId()
+          )
       ),
       S.listItem()
         .title("Products & Services")
@@ -69,10 +78,15 @@ export default () =>
                 // S.list()
                 //   .title("Relationship to Keyzapp")
                 //   .items(relationshipList(technologyProduct, "relationshipToKeyzappProduct"))
-                relationshipList(technologyProduct, "relationshipToKeyzappProduct")
+                relationshipList(
+                  technologyProduct,
+                  "relationshipToKeyzappProduct"
+                )
               ),
-              S.listItem().title("By Company").child(),
-              S.listItem().title("All Products and Services").child(createSuperPane("technologyProduct", S)),
+              // S.listItem().title("By Company").child(null),
+              S.listItem()
+                .title("All Products and Services")
+                .child(createSuperPane("technologyProduct", S)),
             ])
         ),
       S.divider(),
@@ -81,7 +95,11 @@ export default () =>
         .child(
           S.list()
             .title("Email")
-            .items(S.documentTypeListItems().filter((item) => item.getId() === "emailTemplate"))
+            .items(
+              S.documentTypeListItems().filter(
+                (item) => item.getId() === "emailTemplate"
+              )
+            )
         ),
       S.divider(),
       S.listItem()
@@ -89,6 +107,10 @@ export default () =>
         .child(
           S.list()
             .title("Other Items")
-            .items([...S.documentTypeListItems().filter((item) => item.getId() === "media.tag")])
+            .items([
+              ...S.documentTypeListItems().filter(
+                (item) => item.getId() === "media.tag"
+              ),
+            ])
         ),
     ]);

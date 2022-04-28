@@ -25,6 +25,7 @@ import article from "./keyzappedia/article";
 import highlightText from "./keyzappedia/highlightText";
 import question from "./keyzappedia/question";
 import articleText from "./keyzappedia/articleText";
+import dataView from "./keyzappedia/dataView";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -56,5 +57,6 @@ export default createSchema({
     highlightText,
     question,
     articleText,
+    dataView,
   ]),
 });

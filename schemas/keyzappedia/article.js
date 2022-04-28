@@ -57,11 +57,10 @@ export default {
         {
           type: "highlightText",
         },
+        { type: "dataView" },
       ],
       group: "core",
-      options: {
-        editModal: "fullscreen",
-      },
+      options: {},
     },
 
     {

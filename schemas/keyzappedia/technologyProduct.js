@@ -55,6 +55,22 @@ export default {
       group: "product",
     },
     {
+      name: "primaryCategory",
+      type: "string",
+      options: {
+        list: [
+          { title: "CRM", value: "crm" },
+          { title: "Key Management", value: "keyManagement" },
+          { title: "Finanicial Managament", value: "financialManagement" },
+          { title: "Online Advertising", value: "onlineAdvertising" },
+          { title: "Property Portals", value: "propertyPortal" },
+          { title: "Security Tools", value: "security" },
+          { title: "Content Creation & Deployment", value: "contentCreation" },
+        ],
+      },
+      group: "product",
+    },
+    {
       name: "madeBy",
       title: "Made By",
       type: "reference",
@@ -65,7 +81,9 @@ export default {
       name: "targetIndustries",
       title: "Target Industry Sectors",
       type: "array",
-      of: [{ title: "Industry", type: "reference", to: [{ type: "industry" }] }],
+      of: [
+        { title: "Industry", type: "reference", to: [{ type: "industry" }] },
+      ],
 
       group: "product",
     },
