@@ -32,5 +32,6 @@ export default {
     },
     { type: "highlightText" },
     { type: "baseImage" },
+    { type: "dataView" },
   ],
 };
