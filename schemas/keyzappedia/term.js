@@ -6,13 +6,16 @@ export default {
   type: "document",
   title: "Term or Concept",
   icon: HiOutlineDocumentText,
-  groups: fieldGroupList(), //fieldgroups,
+  groups: fieldGroupList({ name: "synonyms", title: "Synonyms" }), //fieldgroups,
 
   fieldsets: [
     {
       name: "termdata",
+      title: "Basic Information",
       options: {
         columns: 2,
+        collapsible: true,
+        collapsed: false,
       },
     },
   ],
@@ -22,17 +25,21 @@ export default {
       title: "Canonical Name",
       description: "The main (canonical) name for the term",
       fieldset: "termdata",
+      group: ["core"],
     },
+    {
+      ...fields.synonyms,
+      group: "synonyms",
+    },
+    fields.slug,
+    fields.summaryImage,
+    fields.internalDescription,
     {
       name: "article",
       type: "reference",
       to: [{ type: "article" }],
       group: "core",
     },
-    fields.synonyms,
-    fields.slug,
-    fields.summaryImage,
-    fields.internalDescription,
     fields.articleText,
     {
       ...linksList,

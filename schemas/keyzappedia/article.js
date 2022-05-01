@@ -14,9 +14,18 @@ export default {
       name: "termdata",
       title: "Basic information",
       hidden: ({ document }) => {
-        return document?.linkedToItem;
+        return !document?.standalone;
       },
 
+      options: {
+        columns: 2,
+        collapsible: true,
+        collapsed: false, //note: not currently possible to collapse based on a callback, like hidden
+      },
+    },
+    {
+      name: "articleSetup",
+      title: "Article Setup",
       options: {
         columns: 2,
         collapsible: true,
@@ -26,12 +35,13 @@ export default {
   ],
   fields: [
     {
-      title: "Linked to another item?",
-      name: "linkedToItem",
+      title: "Standalone",
+      name: "standalone",
       type: "boolean",
-      description:
-        "Is this article part of another item, or should it be read by itself?",
+      description: "Standalone articles exist in their own right",
+      validation: (Rule) => Rule.required(),
       group: "core",
+      fieldset: "articleSetup",
     },
 
     {
@@ -41,27 +51,27 @@ export default {
       fieldset: "termdata",
       validation: (Rule) =>
         Rule.custom((value, context) => {
-          if (!value && !context.document.linkedToItem) {
+          if (!value && context.document.standalone) {
             return "A title is required for standalone articles";
           }
           return true;
         }),
     },
-    {
-      title: "Content",
-      name: "content",
-      description: "The content of the article",
-      type: "array",
-      of: [
-        { type: "articleText" },
-        {
-          type: "highlightText",
-        },
-        { type: "dataView" },
-      ],
-      group: "core",
-      options: {},
-    },
+    // {
+    //   title: "Content",
+    //   name: "content",
+    //   description: "The content of the article",
+    //   type: "array",
+    //   of: [
+    //     { type: "articleText" },
+    //     {
+    //       type: "highlightText",
+    //     },
+    //     { type: "dataView" },
+    //   ],
+    //   group: "core",
+    //   options: {},
+    // },
 
     {
       name: "relatesTo",
@@ -79,7 +89,7 @@ export default {
         },
       ],
       hidden: ({ document }) => {
-        return document?.linkedToItem;
+        return !document?.standalone;
       },
       options: {
         layout: "tags",
@@ -88,17 +98,17 @@ export default {
     {
       ...fields.synonyms,
       hidden: ({ document }) => {
-        return document?.linkedToItem;
+        return !document?.standalone;
       },
     },
     {
       ...fields.slug,
       // hidden: ({ document }) => {
-      //   return document?.linkedToItem;
+      //   return !document?.standalone;
       // },
       validation: (Rule) =>
         Rule.custom((value, context) => {
-          if (!value && !context.document.linkedToItem) {
+          if (!value && context.document.standalone) {
             return "A slug is required for standalone articles";
           }
           return true;
@@ -108,34 +118,35 @@ export default {
     {
       ...fields.summaryImage,
       hidden: ({ document }) => {
-        return document?.linkedToItem;
+        return !document?.standalone;
       },
     },
     {
       ...fields.internalDescription,
       group: ["core", "article"],
       hidden: ({ document }) => {
-        return document?.linkedToItem;
+        return !document?.standalone;
       },
     },
     {
       ...fields.articleText,
-      hidden: ({ document }) => {
-        return document?.linkedToItem;
-      },
+      // hidden: ({ document }) => {
+      //   return !document?.standalone;
+      // },
+      group: "core",
     },
     {
       ...linksList,
       group: "links",
       hidden: ({ document }) => {
-        return document?.linkedToItem;
+        return !document?.standalone;
       },
     },
     fields.referringDocuments,
   ],
   validation: (Rule) =>
     Rule.custom((fields) => {
-      if (!fields.linkedToItem && !fields.title) {
+      if (!fields.standalone && !fields.title) {
         return "Articles not for specific items must have a title";
       }
       return true;
