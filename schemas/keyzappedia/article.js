@@ -146,8 +146,8 @@ export default {
   ],
   validation: (Rule) =>
     Rule.custom((fields) => {
-      if (!fields.standalone && !fields.title) {
-        return "Articles not for specific items must have a title";
+      if (fields.standalone && !fields.title) {
+        return "Standalone articles must have a title";
       }
       return true;
     }),
