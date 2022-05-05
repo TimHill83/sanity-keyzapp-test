@@ -3,7 +3,7 @@ import { fields, fieldGroupList } from "./fields/corefields";
 import { RiArticleLine } from "react-icons/ri";
 
 export default {
-  name: "article",
+  name: "article", //Needs to be updated
   type: "document",
   title: "Article",
   description: "A general purpose article about something in our business",
