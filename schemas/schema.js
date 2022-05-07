@@ -24,7 +24,6 @@ import bestPractice from "./keyzappedia/bestPractice";
 import generalArticle from "./keyzappedia/generalArticle";
 import highlightText from "./keyzappedia/highlightText";
 import question from "./keyzappedia/question";
-import articleText from "./keyzappedia/articleText";
 import dataView from "./keyzappedia/dataView";
 import articleContent from "./keyzappedia/articleContent";
 
@@ -57,7 +56,6 @@ export default createSchema({
     industry,
     highlightText,
     question,
-    articleText,
     dataView,
     articleContent,
   ]),
