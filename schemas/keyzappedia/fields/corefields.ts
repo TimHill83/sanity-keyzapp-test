@@ -1,7 +1,5 @@
 import articleText from "./articleText";
 import ReferencedBy from "../../../components/inputs/ReferencedBy";
-import { array } from "prop-types";
-import { initial } from "lodash";
 const fieldgroups = [
   {
     name: "core",
@@ -161,6 +159,12 @@ const fields = {
         scheme: ["http", "https"],
       }),
   },
+  articleContent: {
+      name: "article",
+      type: "reference",
+      to: [{ type: "articleContent" }],
+      group: ["core", "article"],
+    },
   articleText: {
     ...articleText,
     description: "An explanatory article",

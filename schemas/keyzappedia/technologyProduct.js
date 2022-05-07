@@ -23,8 +23,8 @@ export default {
     fields.synonyms,
     fields.slug,
     fields.summaryImage,
-
     fields.internalDescription,
+    fields.articleContent,
     fields.articleText,
     {
       ...linksList,

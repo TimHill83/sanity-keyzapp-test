@@ -49,12 +49,7 @@ export default {
       ...fields.internalDescription,
       group: ["core", "article"],
     },
-    {
-      name: "article",
-      type: "reference",
-      to: [{ type: "articleContent" }],
-      group: ["core", "article"],
-    },
+    fields.articleContent,
     {
       ...fields.articleText,
       group: "core",

@@ -16,12 +16,12 @@ export default {
       ...fields.name,
       title: "Standard Name",
       description: "The name of the standard",
-      fieldset: fieldsets.basicInfo.name,
     },
     fields.synonyms,
     fields.slug,
     fields.summaryImage,
     fields.internalDescription,
+    fields.articleContent,
     fields.articleText,
     {
       ...linksList,

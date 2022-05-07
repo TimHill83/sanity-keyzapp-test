@@ -35,13 +35,7 @@ export default {
     fields.slug,
     { ...fields.summaryImage, fieldset: "images" },
     fields.internalDescription,
-    {
-      name: "article",
-      type: "reference",
-      to: [{ type: "articleContent" }],
-      group: ["core", "article"],
-    },
-
+    fields.articleContent,
     {
       ...fields.articleText,
       // hidden: ({ document }) => {
