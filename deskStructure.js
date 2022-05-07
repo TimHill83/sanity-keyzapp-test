@@ -3,6 +3,7 @@ import React from "react";
 import MjmlRenderer from "./components/MjmlRenderer";
 import { getEditorTitle } from "./helpers/getEditorTitle";
 import { createSuperPane } from "sanity-super-pane";
+import { subjectFilterGroq } from "./schemas/keyzappedia/subjects";
 
 import technologyProduct from "./schemas/keyzappedia/subjects/technologyProduct";
 
@@ -48,9 +49,13 @@ export default () =>
   S.list()
     .title("Content")
     .items([
-      // S.documentList()
-      //   .title("Temporary Article Migration")
-      //   .filter(`_type in ["term"]`),
+      S.listItem()
+        .title("Temp article migration")
+        .child(
+          S.documentList()
+            .title("Requiring Migration")
+            .filter(`${subjectFilterGroq} && defined(articleText)`)
+        ),
       S.divider(),
       ...S.documentTypeListItems().filter(
         (item) =>

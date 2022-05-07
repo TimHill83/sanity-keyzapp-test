@@ -12,21 +12,13 @@ import twoColumnSection from "./twoColumnSection";
 import emailColumn from "./emailColumn";
 import emailSection from "./emailSection";
 import richImage from "./richImage";
-// import term from "./keyzappedia/subjects/term";
 import internalLink from "./internalLink";
 import externalLink from "./externalLink";
 import baseImage from "./baseImage";
-// import company from "./keyzappedia/subjects/company";
-// import technologyProduct from "./keyzappedia/subjects/technologyProduct";
-// import industry from "./keyzappedia/subjects/industry";
-// import standard from "./keyzappedia/subjects/standard";
-// import bestPractice from "./keyzappedia/subjects/bestPractice";
-// import generalArticle from "./keyzappedia/subjects/generalArticle";
 import highlightText from "./keyzappedia/highlightText";
-// import question from "./keyzappedia/subjects/question";
 import dataView from "./keyzappedia/dataView";
 import articleContent from "./keyzappedia/articleContent";
-import { subjectSchemas } from "./keyzappedia/subjects/subjects";
+import { subjectSchemas } from "./keyzappedia/subjects/";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -48,17 +40,10 @@ export default createSchema({
     baseImage,
     internalLink,
     externalLink,
-    // standard,
-    // bestPractice,
-    // generalArticle,
-    // term,
-    // company,
-    // technologyProduct,
-    // industry,
     highlightText,
-    // question,
     dataView,
     articleContent,
+
     ...subjectSchemas,
   ]),
 });

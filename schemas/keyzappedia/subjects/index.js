@@ -31,9 +31,9 @@ function subjectTypesList() {
 
 function subjectFilterGroqString() {
   console.log("subjectFilterGroqString() is running");
-  return `_type in ${subjectSchemas
+  return `_type in [${subjectSchemas
     .map((item) => `"${item.name}"`)
-    .join(", ")}`;
+    .join(", ")}]`;
 }
 
 export const subjectTypes = subjectTypesList();
