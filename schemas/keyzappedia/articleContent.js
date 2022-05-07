@@ -8,6 +8,7 @@ export default {
   title: "Article Content",
   description: "Article content that is about a topic",
   icon: RiArticleLine,
+  __experimental_search: [],
   groups: fieldGroupList(), //fieldgroups,
   // fieldsets: [
   //   {
