@@ -1,5 +1,5 @@
-import linksList from "./fields/linksList";
-import { fields, fieldGroupList, fieldsets } from "./fields/corefields";
+import linksList from "../fields/linksList";
+import { fields, fieldGroupList, fieldsets } from "../fields/corefields";
 import { HiOutlineOfficeBuilding } from "react-icons/hi";
 
 export default {

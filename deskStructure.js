@@ -1,11 +1,10 @@
 import S from "@sanity/desk-tool/structure-builder";
-import EmailPreview from "./components/emailPreview";
 import React from "react";
 import MjmlRenderer from "./components/MjmlRenderer";
 import { getEditorTitle } from "./helpers/getEditorTitle";
 import { createSuperPane } from "sanity-super-pane";
 
-import technologyProduct from "./schemas/keyzappedia/technologyProduct";
+import technologyProduct from "./schemas/keyzappedia/subjects/technologyProduct";
 
 const relationshipList = (type, fieldName, listTitle) => {
   const testField = type.fields.filter((field) => field.name === fieldName)[0];
@@ -49,6 +48,10 @@ export default () =>
   S.list()
     .title("Content")
     .items([
+      // S.documentList()
+      //   .title("Temporary Article Migration")
+      //   .filter(`_type in ["term"]`),
+      S.divider(),
       ...S.documentTypeListItems().filter(
         (item) =>
           !["media.tag", "emailTemplate", "technologyProduct"].includes(
