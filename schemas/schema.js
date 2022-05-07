@@ -18,7 +18,7 @@ import baseImage from "./baseImage";
 import highlightText from "./keyzappedia/highlightText";
 import dataView from "./keyzappedia/dataView";
 import articleContent from "./keyzappedia/articleContent";
-import { subjectSchemas } from "./keyzappedia/subjects/";
+import { topicSchemas } from "./keyzappedia/topics/";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -44,6 +44,6 @@ export default createSchema({
     dataView,
     articleContent,
 
-    ...subjectSchemas,
+    ...topicSchemas,
   ]),
 });

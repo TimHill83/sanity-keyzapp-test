@@ -3,9 +3,9 @@ import React from "react";
 import MjmlRenderer from "./components/MjmlRenderer";
 import { getEditorTitle } from "./helpers/getEditorTitle";
 import { createSuperPane } from "sanity-super-pane";
-import { subjectFilterGroq } from "./schemas/keyzappedia/subjects";
+import { topicFilterGroq } from "./schemas/keyzappedia/topics";
 
-import technologyProduct from "./schemas/keyzappedia/subjects/technologyProduct";
+import technologyProduct from "./schemas/keyzappedia/topics/technologyProduct";
 
 const relationshipList = (type, fieldName, listTitle) => {
   const testField = type.fields.filter((field) => field.name === fieldName)[0];
@@ -54,7 +54,7 @@ export default () =>
         .child(
           S.documentList()
             .title("Requiring Migration")
-            .filter(`${subjectFilterGroq} && defined(articleText)`)
+            .filter(`${topicFilterGroq} && defined(articleText)`)
         ),
       S.divider(),
       ...S.documentTypeListItems().filter(
@@ -69,28 +69,14 @@ export default () =>
           S.list()
             .title("Products & Services")
             .items([
-              S.listItem().title("By Relationship To Keyzapp").child(
-                // S.list()
-                //   .title("Relationship to Keyzapp")
-                //   .items([
-                //     S.listItem()
-                //       .title("Tool we use")
-                //       .child(
-                //         S.documentList()
-                //           .title("Products by Relationship")
-                //           .filter(`_type == 'technologyProduct' && relationshipToKeyzappProduct == "usedAtKeyzapp"`)
-                //       ),
-                //     S.listItem().title("Integrated with Keyzapp").child(),
-                //   ])
-                ////
-                // S.list()
-                //   .title("Relationship to Keyzapp")
-                //   .items(relationshipList(technologyProduct, "relationshipToKeyzappProduct"))
-                relationshipList(
-                  technologyProduct,
-                  "relationshipToKeyzappProduct"
-                )
-              ),
+              S.listItem()
+                .title("By Relationship To Keyzapp")
+                .child(
+                  relationshipList(
+                    technologyProduct,
+                    "relationshipToKeyzappProduct"
+                  )
+                ),
               // S.listItem().title("By Company").child(null),
               S.listItem()
                 .title("All Products and Services")
@@ -116,6 +102,13 @@ export default () =>
           S.list()
             .title("Other Items")
             .items([
+              S.listItem()
+                .title("Without Current Slug")
+                .child(
+                  S.documentList()
+                    .title("Without slug")
+                    .filter(`${topicFilterGroq} && !defined(slug.current)`)
+                ),
               ...S.documentTypeListItems().filter(
                 (item) => item.getId() === "media.tag"
               ),

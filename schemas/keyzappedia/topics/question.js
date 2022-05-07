@@ -1,6 +1,6 @@
 import basicText from "../fields/basicText";
 import { RiQuestionnaireLine } from "react-icons/ri";
-import keyzappediaTypes from "../keyzappediaTypes";
+import keyzappediaTypes from "./keyzappediaTypes";
 import { fields, fieldGroupList, fieldsets } from "../fields/corefields";
 export default {
   name: "question",

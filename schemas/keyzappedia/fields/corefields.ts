@@ -21,11 +21,12 @@ function fieldGroupList(middleGroup?:Array<any>) : Array<any> {
   let initialGroup = [{
     name: "core",
     title: "Core Data",
-    default: true,
+    default: false, // temporary
   },
   {
     name: "article",
     title: "Article",
+    default: true,
     }, // To be removed once transition is complete
   {
     name: "synonyms",
@@ -167,6 +168,7 @@ const fields = {
     },
   articleText: {
     ...articleText,
+    title: "ArticleText",
     description: "An explanatory article",
     group: "article",
   },

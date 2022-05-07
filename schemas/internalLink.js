@@ -1,5 +1,5 @@
 import { FiExternalLink } from "react-icons/fi";
-import keyzappediaTypes from "./keyzappedia/keyzappediaTypes";
+import keyzappediaTypes from "./keyzappedia/topics/keyzappediaTypes";
 export default {
   name: "internalLink",
   title: "Internal Link",
