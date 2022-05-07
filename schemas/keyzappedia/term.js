@@ -1,5 +1,5 @@
 import linksList from "./fields/linksList";
-import { fields, fieldGroupList } from "./fields/corefields";
+import { fields, fieldGroupList, fieldsets } from "./fields/corefields";
 import { HiOutlineDocumentText } from "react-icons/hi";
 export default {
   name: "term",
@@ -9,13 +9,14 @@ export default {
   groups: fieldGroupList({ name: "synonyms", title: "Synonyms" }), //fieldgroups,
 
   fieldsets: [
+    fieldsets.basicInfo,
     {
-      name: "termdata",
-      title: "Basic Information",
+      name: "images",
+      title: "Images",
       options: {
         columns: 2,
         collapsible: true,
-        collapsed: false,
+        collapsed: true,
       },
     },
   ],
@@ -24,7 +25,7 @@ export default {
       ...fields.name,
       title: "Canonical Name",
       description: "The main (canonical) name for the term",
-      fieldset: "termdata",
+      fieldset: fieldsets.basicInfo.name,
       group: ["core"],
     },
     {
@@ -32,15 +33,21 @@ export default {
       group: "synonyms",
     },
     fields.slug,
-    fields.summaryImage,
+    { ...fields.summaryImage, fieldset: "images" },
     fields.internalDescription,
     {
       name: "article",
       type: "reference",
-      to: [{ type: "article" }],
-      group: "core",
+      to: [{ type: "articleContent" }],
+      group: ["core", "article"],
     },
-    fields.articleText,
+
+    {
+      ...fields.articleText,
+      // hidden: ({ document }) => {
+      //   return !document?.articleText?.length > 0;
+      // },
+    },
     {
       ...linksList,
       group: "links",

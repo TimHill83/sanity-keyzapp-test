@@ -28,6 +28,10 @@ function fieldGroupList(middleGroup?:Array<any>) : Array<any> {
   {
     name: "article",
     title: "Article",
+    }, // To be removed once transition is complete
+  {
+    name: "synonyms",
+    title: "Synonyms",
     }]; 
   let endGroup = [ {
     name: "links",
@@ -39,6 +43,19 @@ function fieldGroupList(middleGroup?:Array<any>) : Array<any> {
   return initialGroup.concat(middleGroup ? middleGroup : [], endGroup)
 
 }
+
+const fieldsets = {
+   basicInfo: {
+      name: "basicInfo",
+      title: "Basic Information",
+      options: {
+        columns: 2,
+        collapsible: true,
+        collapsed: false,
+      },
+    },
+}
+
 const fields = {
   name: {
     name: "title",
@@ -50,7 +67,7 @@ const fields = {
     title: "Synonyms",
     description: "Other names for the term",
     type: "array",
-    group: "core",
+    group: "synonyms",
     of: [
       {
         type: "object",
@@ -94,7 +111,7 @@ const fields = {
     options: {
       source: "title",
     },
-    fieldset: "termdata",
+    fieldset: fieldsets.basicInfo.name,
     group: "core",
   },
   summaryImage: {
@@ -109,7 +126,7 @@ const fields = {
       }
     ],
     options: { hotspot: true },
-    fieldset: "termdata",
+    fieldset: fieldsets.basicInfo.name,
     group: "core",
   },
   internalDescription: {
@@ -165,4 +182,6 @@ const fields = {
   },
 };
 
-export { fields, fieldgroups, fieldGroupList };
+
+
+export { fields, fieldgroups, fieldGroupList, fieldsets };
