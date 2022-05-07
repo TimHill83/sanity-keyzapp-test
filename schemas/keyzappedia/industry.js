@@ -1,5 +1,5 @@
 import linksList from "./fields/linksList";
-import { fields, fieldGroupList } from "./fields/corefields";
+import { fields, fieldGroupList, fieldsets } from "./fields/corefields";
 import { RiNodeTree } from "react-icons/ri";
 
 export default {
@@ -8,19 +8,11 @@ export default {
   title: "Industry Sector",
   icon: RiNodeTree,
   groups: fieldGroupList(),
-  fieldsets: [
-    {
-      name: "termdata",
-      options: {
-        columns: 2,
-      },
-    },
-  ],
+  fieldsets: [fieldsets.basicInfo],
   fields: [
     {
       ...fields.name,
       description: "The name of the industry",
-      fieldset: "termdata",
     },
     fields.synonyms,
     fields.slug,

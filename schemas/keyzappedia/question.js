@@ -1,7 +1,7 @@
 import basicText from "./fields/basicText";
 import { RiQuestionnaireLine } from "react-icons/ri";
 import keyzappediaTypes from "./keyzappediaTypes";
-import { fields, fieldGroupList } from "./fields/corefields";
+import { fields, fieldGroupList, fieldsets } from "./fields/corefields";
 export default {
   name: "question",
   type: "document",
@@ -9,6 +9,7 @@ export default {
   description: "Text that allows special formatting",
   icon: RiQuestionnaireLine,
   groups: fieldGroupList(),
+  fieldsets: [fieldsets.basicInfo],
   fields: [
     {
       title: "Question",

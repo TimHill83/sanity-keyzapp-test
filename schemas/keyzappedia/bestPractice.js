@@ -1,28 +1,21 @@
 import linksList from "./fields/linksList";
-import { fields, fieldGroupList } from "./fields/corefields";
+import { fields, fieldGroupList, fieldsets } from "./fields/corefields";
 import { GoMortarBoard } from "react-icons/go";
 
 export default {
   name: "bestPractice",
   type: "document",
   title: "Best Practice",
-  description: "A Best Practice is a set of recommendations for working most effectively",
+  description:
+    "A Best Practice is a set of recommendations for working most effectively",
   icon: GoMortarBoard,
   groups: fieldGroupList(), //fieldgroups,
-  fieldsets: [
-    {
-      name: "termdata",
-      options: {
-        columns: 2,
-      },
-    },
-  ],
+  fieldsets: [fieldsets.basicInfo],
   fields: [
     {
       ...fields.name,
       title: "Standard Name",
       description: "The name of the standard",
-      fieldset: "termdata",
     },
     {
       name: "relatesTo",
@@ -31,7 +24,12 @@ export default {
       of: [
         {
           type: "reference",
-          to: [{ type: "term" }, { type: "company" }, { type: "industry" }, { type: "technologyProduct" }],
+          to: [
+            { type: "term" },
+            { type: "company" },
+            { type: "industry" },
+            { type: "technologyProduct" },
+          ],
         },
       ],
       options: {

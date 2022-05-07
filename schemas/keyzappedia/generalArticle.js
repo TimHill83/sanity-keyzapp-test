@@ -1,5 +1,5 @@
 import linksList from "./fields/linksList";
-import { fields, fieldGroupList } from "./fields/corefields";
+import { fields, fieldGroupList, fieldsets } from "./fields/corefields";
 import { RiArticleLine } from "react-icons/ri";
 
 export default {
@@ -9,23 +9,12 @@ export default {
   description: "A general purpose article about something in our business",
   icon: RiArticleLine,
   groups: fieldGroupList(), //fieldgroups,
-  fieldsets: [
-    {
-      name: "termdata",
-      title: "Basic information",
-      options: {
-        columns: 2,
-        collapsible: true,
-        collapsed: false, //note: not currently possible to collapse based on a callback, like hidden
-      },
-    },
-  ],
+  fieldsets: [fieldsets.basicInfo],
   fields: [
     {
       ...fields.name,
       title: "Title",
       description: "The article title",
-      fieldset: "termdata",
     },
     {
       name: "relatesTo",

@@ -61,6 +61,7 @@ const fields = {
     name: "title",
     type: "string",
     group: "core",
+    fieldset: fieldsets.basicInfo.name
   },
   synonyms: {
     name: "synonyms",

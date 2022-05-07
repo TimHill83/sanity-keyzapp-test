@@ -1,5 +1,5 @@
 import linksList from "./fields/linksList";
-import { fields, fieldGroupList } from "./fields/corefields";
+import { fields, fieldGroupList, fieldsets } from "./fields/corefields";
 import { HiOutlineDesktopComputer } from "react-icons/hi";
 
 export default {
@@ -13,20 +13,12 @@ export default {
       title: "Product",
     },
   ]),
-  fieldsets: [
-    {
-      name: "termdata",
-      options: {
-        columns: 2,
-      },
-    },
-  ],
+  fieldsets: [fieldsets.basicInfo],
   fields: [
     {
       ...fields.name,
       title: "Product Name",
       description: "The Company's Name",
-      fieldset: "termdata",
     },
     fields.synonyms,
     fields.slug,

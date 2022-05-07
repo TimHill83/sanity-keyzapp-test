@@ -1,5 +1,5 @@
 import linksList from "./fields/linksList";
-import { fields, fieldGroupList } from "./fields/corefields";
+import { fields, fieldGroupList, fieldsets } from "./fields/corefields";
 import { HiOutlineOfficeBuilding } from "react-icons/hi";
 
 export default {
@@ -8,20 +8,12 @@ export default {
   title: "Company",
   icon: HiOutlineOfficeBuilding,
   groups: fieldGroupList([{ name: "company", title: "Company" }]),
-  fieldsets: [
-    {
-      name: "termdata",
-      options: {
-        columns: 2,
-      },
-    },
-  ],
+  fieldsets: [fieldsets.basicInfo],
   fields: [
     {
       ...fields.name,
       title: "Company Name",
       description: "The Company's Name",
-      fieldset: "termdata",
     },
     fields.synonyms,
     fields.slug,
