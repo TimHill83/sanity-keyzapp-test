@@ -8,7 +8,7 @@ export default {
   title: "Company",
   icon: HiOutlineOfficeBuilding,
   groups: fieldGroupList([{ name: "company", title: "Company" }]),
-  fieldsets: [fieldsets.basicInfo],
+  fieldsets: [fieldsets.basicInfo, fieldsets.images],
   fields: [
     {
       ...fields.name,
@@ -20,7 +20,6 @@ export default {
     fields.summaryImage,
     fields.internalDescription,
     fields.articleContent,
-    fields.articleText,
     { ...fields.website, group: "links" },
     {
       ...linksList,

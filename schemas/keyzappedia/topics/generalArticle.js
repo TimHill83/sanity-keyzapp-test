@@ -9,7 +9,7 @@ export default {
   description: "A general purpose article about something in our business",
   icon: RiArticleLine,
   groups: fieldGroupList(), //fieldgroups,
-  fieldsets: [fieldsets.basicInfo],
+  fieldsets: [fieldsets.basicInfo, fieldsets.images],
   fields: [
     {
       ...fields.name,
@@ -47,13 +47,9 @@ export default {
     },
     {
       ...fields.internalDescription,
-      group: ["core", "article"],
+      group: ["core"],
     },
     fields.articleContent,
-    {
-      ...fields.articleText,
-      group: "core",
-    },
     {
       ...linksList,
       group: "links",

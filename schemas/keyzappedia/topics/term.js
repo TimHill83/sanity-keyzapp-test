@@ -8,18 +8,7 @@ export default {
   icon: HiOutlineDocumentText,
   groups: fieldGroupList({ name: "synonyms", title: "Synonyms" }), //fieldgroups,
 
-  fieldsets: [
-    fieldsets.basicInfo,
-    {
-      name: "images",
-      title: "Images",
-      options: {
-        columns: 2,
-        collapsible: true,
-        collapsed: true,
-      },
-    },
-  ],
+  fieldsets: [fieldsets.basicInfo, fieldsets.images],
   fields: [
     {
       ...fields.name,
@@ -37,26 +26,9 @@ export default {
     fields.internalDescription,
     fields.articleContent,
     {
-      ...fields.articleText,
-      // hidden: ({ document }) => {
-      //   return !document?.articleText?.length > 0;
-      // },
-    },
-    {
       ...linksList,
       group: "links",
     },
     fields.referringDocuments,
   ],
-  // preview: {
-  //   select: {
-  //     _key: "_key",
-  //     title: "canonicalName",
-  //     type: "_type",
-  //   },
-  //   prepare({ _key, title, type }) {
-  //     return { _key, title, type };
-  //   },
-  //   component: TermPreview,
-  // },
 };

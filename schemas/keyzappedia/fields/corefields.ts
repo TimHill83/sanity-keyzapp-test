@@ -21,13 +21,8 @@ function fieldGroupList(middleGroup?:Array<any>) : Array<any> {
   let initialGroup = [{
     name: "core",
     title: "Core Data",
-    default: false, // temporary
-  },
-  {
-    name: "article",
-    title: "Article",
     default: true,
-    }, // To be removed once transition is complete
+  },
   {
     name: "synonyms",
     title: "Synonyms",
@@ -51,6 +46,15 @@ const fieldsets = {
         columns: 2,
         collapsible: true,
         collapsed: false,
+      },
+  },
+  images: {
+      name: "images",
+      title: "Images",
+      options: {
+        columns: 2,
+        collapsible: true,
+        collapsed: true,
       },
     },
 }
@@ -126,7 +130,7 @@ const fields = {
       }
     ],
     options: { hotspot: true },
-    fieldset: fieldsets.basicInfo.name,
+    fieldset: fieldsets.images.name,
     group: "core",
   },
   internalDescription: {
@@ -164,7 +168,7 @@ const fields = {
       name: "article",
       type: "reference",
       to: [{ type: "articleContent" }],
-      group: ["core", "article"],
+      group: ["core"],
     },
   articleText: {
     ...articleText,

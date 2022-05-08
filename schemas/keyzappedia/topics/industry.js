@@ -8,7 +8,7 @@ export default {
   title: "Industry Sector",
   icon: RiNodeTree,
   groups: fieldGroupList(),
-  fieldsets: [fieldsets.basicInfo],
+  fieldsets: [fieldsets.basicInfo, fieldsets.images],
   fields: [
     {
       ...fields.name,
@@ -19,7 +19,6 @@ export default {
     fields.summaryImage,
     fields.internalDescription,
     fields.articleContent,
-    fields.articleText,
     {
       ...linksList,
       group: "links",
