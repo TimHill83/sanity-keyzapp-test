@@ -51,9 +51,12 @@ export default () =>
     .items([
       ...S.documentTypeListItems().filter(
         (item) =>
-          !["media.tag", "emailTemplate", "technologyProduct"].includes(
-            item.getId()
-          )
+          ![
+            "media.tag",
+            "emailTemplate",
+            "technologyProduct",
+            "articleContent",
+          ].includes(item.getId())
       ),
       S.listItem()
         .title("Products & Services")
