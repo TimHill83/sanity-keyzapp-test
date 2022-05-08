@@ -49,14 +49,6 @@ export default () =>
   S.list()
     .title("Content")
     .items([
-      S.listItem()
-        .title("Temp article migration")
-        .child(
-          S.documentList()
-            .title("Requiring Migration")
-            .filter(`${topicFilterGroq} && defined(articleText)`)
-        ),
-      S.divider(),
       ...S.documentTypeListItems().filter(
         (item) =>
           !["media.tag", "emailTemplate", "technologyProduct"].includes(
@@ -84,34 +76,54 @@ export default () =>
             ])
         ),
       S.divider(),
+
       S.listItem()
-        .title("Email Template Manager")
+        .title("Management")
         .child(
           S.list()
-            .title("Email")
-            .items(
-              S.documentTypeListItems().filter(
-                (item) => item.getId() === "emailTemplate"
-              )
-            )
-        ),
-      S.divider(),
-      S.listItem()
-        .title("Other Items")
-        .child(
-          S.list()
-            .title("Other Items")
+            .title("Management")
             .items([
               S.listItem()
-                .title("Without Current Slug")
+                .title("Other Items")
                 .child(
-                  S.documentList()
-                    .title("Without slug")
-                    .filter(`${topicFilterGroq} && !defined(slug.current)`)
+                  S.list()
+                    .title("Other Items")
+                    .items([
+                      ...S.documentTypeListItems().filter(
+                        (item) => item.getId() === "media.tag"
+                      ),
+                    ])
                 ),
-              ...S.documentTypeListItems().filter(
-                (item) => item.getId() === "media.tag"
-              ),
+              S.listItem()
+                .title("Email Template Manager")
+                .child(
+                  S.list()
+                    .title("Email")
+                    .items(
+                      S.documentTypeListItems().filter(
+                        (item) => item.getId() === "emailTemplate"
+                      )
+                    )
+                ),
+              S.listItem()
+                .title("Issues")
+                .child(
+                  S.list()
+                    .title("Issues")
+                    .items([
+                      S.listItem()
+                        .title("Without Current Slug")
+                        .child(
+                          S.documentList()
+                            .title("Without slug")
+                            .filter(
+                              `${topicFilterGroq} && !defined(slug.current)`
+                            )
+                        ),
+                    ])
+                ),
             ])
         ),
+      ,
+      S.divider(),
     ]);
