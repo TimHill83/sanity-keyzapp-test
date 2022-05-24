@@ -23,6 +23,15 @@ const relationshipList = (type, fieldName, listTitle) => {
           .child(S.documentList().title(option.title).filter(filter))
       );
     });
+    structure.push(
+      S.listItem()
+        .title("Not Set")
+        .child(
+          S.documentList()
+            .title("Not Set")
+            .filter(`_type == '${type.name}' && !defined(${fieldName})`)
+        )
+    );
     return S.list().title(theListTitle).items(structure);
   }
   if (testField.type === "reference") return null;
@@ -72,6 +81,9 @@ export default () =>
                     "relationshipToKeyzappProduct"
                   )
                 ),
+              S.listItem()
+                .title("By Primary Category")
+                .child(relationshipList(technologyProduct, "primaryCategory")),
               // S.listItem().title("By Company").child(null),
               S.listItem()
                 .title("All Products and Services")
