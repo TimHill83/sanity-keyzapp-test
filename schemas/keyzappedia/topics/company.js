@@ -38,6 +38,7 @@ export default {
       type: "string",
       options: {
         list: [
+          { title: "Customer", value: "customer" },
           { title: "Supplier", value: "supplier" },
           { title: "Potential Partner", value: "potentialPartner" },
           { title: "Commerical Partner", value: "commercialPartner" },
