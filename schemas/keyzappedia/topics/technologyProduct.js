@@ -61,7 +61,12 @@ export default {
           { title: "Security Tools", value: "security" },
           { title: "Online Advertising", value: "onlineAdvertising" },
           { title: "Property Portals", value: "propertyPortal" },
+          {
+            title: "Repairs and Maintenance Management",
+            value: "maintenanceManagement",
+          },
           { title: "Content Creation & Publishing", value: "contentCreation" },
+          { title: "Knowledge Management", value: "knowledgeManagement" },
           { title: "Other", value: "other" },
         ],
       },

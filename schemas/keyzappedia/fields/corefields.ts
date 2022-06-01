@@ -1,4 +1,5 @@
 import articleText from "./articleText";
+import basicText from "./basicText";
 import ReferencedBy from "../../../components/inputs/ReferencedBy";
 const fieldgroups = [
   {
@@ -81,23 +82,9 @@ const fields = {
             name: "synonym",
           },
           {
-            type: "array",
+            
             name: "synonymNotes",
-            of: [
-              {
-                type: "block",
-                styles: [],
-                marks: {
-                  annotations: [
-                    {
-                      name: "relatedTerm",
-                      title: "Related Term",
-                      type: "internalLink",
-                    },
-                  ],
-                },
-              },
-            ],
+            ...basicText
           },
         ],
       },
@@ -137,22 +124,7 @@ const fields = {
     name: "internalDescription",
     title: "Definition",
     description: "What the term means.  Keep it to around 2 sentences.",
-    type: "array",
-    of: [
-      {
-        type: "block",
-        styles: [],
-        marks: {
-          annotations: [
-            {
-              name: "relatedTerm",
-              title: "Related Term",
-              type: "internalLink",
-            },
-          ],
-        },
-      },
-    ],
+    ...basicText,
     group: "core",
   },
   website: {

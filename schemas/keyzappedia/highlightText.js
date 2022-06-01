@@ -3,6 +3,7 @@ import { MdOutlineStickyNote2 } from "react-icons/md";
 import { HiOutlineLightBulb, HiOutlinePencilAlt } from "react-icons/hi";
 import { TiWarningOutline } from "react-icons/ti";
 import { CgFormatText } from "react-icons/cg";
+import basicText from "./fields/basicText";
 
 function highlightText(props) {
   let textType = {
@@ -62,7 +63,14 @@ function highlightText(props) {
       }}
     >
       <span style={{ pointerEvents: "none", fontWeight: "bold" }}>
-        <Icon icon={textType.icon} style={{ top: "0.125em", marginRight: "0.25em", position: "relative" }}></Icon>
+        <Icon
+          icon={textType.icon}
+          style={{
+            top: "0.125em",
+            marginRight: "0.25em",
+            position: "relative",
+          }}
+        ></Icon>
         {textType.name ? textType.name + ": " : ""}
       </span>
       {props.value.subtitle}
@@ -93,22 +101,7 @@ export default {
     {
       name: "text",
       title: "Text",
-      type: "array",
-      of: [
-        {
-          type: "block",
-          styles: [],
-          marks: {
-            annotations: [
-              {
-                name: "relatedTerm",
-                title: "Related Term",
-                type: "internalLink",
-              },
-            ],
-          },
-        },
-      ],
+      ...basicText,
     },
   ],
   preview: {
@@ -119,7 +112,9 @@ export default {
     prepare(selection) {
       const { title } = selection;
       // See Previewing Portable Text https://www.sanity.io/docs/previewing-block-content
-      const text = (selection.text || []).find((block) => block._type === "block");
+      const text = (selection.text || []).find(
+        (block) => block._type === "block"
+      );
       return {
         title: title,
         subtitle: text
