@@ -47,6 +47,8 @@ export default {
     },
     {
       ...fields.internalDescription,
+      title: "Summary",
+      description: "Summary of the article.  Keep it to around 2 sentences.",
       group: ["core"],
     },
     fields.articleContent,
