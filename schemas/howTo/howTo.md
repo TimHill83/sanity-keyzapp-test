@@ -26,7 +26,6 @@ Inline steps could arguably be useful, where no re-use is necessary since there 
 ### Steps can have an "outcome"
 An "Outcome is not a step, but it is information (basically in the same format) that tells you something has happened.
 
-**ToDo:** Currently I've implemented outcomes separately, but they can only really happen as a direct result of a step, so should combine?
-
+Initially I created a separate document called `outcome` that was referenced from the HowTo, but since an outcome is always dependent on a Step, I put an outcomes array in the step.
 ### How to handle Recommended next How-To's?
-This is straying into process territory, but for a customer user especially, there are sometimes processes that logically follow that they should be able to look up.  Perhaps add this as a further optional link.
+**ToDo:** This is straying into process territory, but for a customer user especially, there are sometimes processes that logically follow that they should be able to look up.  Perhaps add this as a further optional link.

@@ -6,7 +6,17 @@ export default {
   name: "howToStep",
   type: "document",
   icon: FaRegCheckSquare,
-  groups: fieldGroupList(),
+  groups: fieldGroupList([
+    {
+      name: "step",
+      title: "Step",
+      default: true,
+    },
+    {
+      name: "outcomes",
+      title: "Otcomes",
+    },
+  ]),
   fields: [
     {
       ...basicText,
@@ -32,6 +42,11 @@ export default {
       name: "stepDetails",
       type: "array",
       of: [{ type: "stepText" }, { type: "highlightText" }],
+    },
+    {
+      name: "outcomes",
+      type: "array",
+      of: [{ type: "stepOutcome" }],
     },
     fields.referringDocuments,
   ],

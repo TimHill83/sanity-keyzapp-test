@@ -3,8 +3,8 @@ import { fields, fieldGroupList } from "../keyzappedia/fields/corefields";
 import { BsArrowBarDown } from "react-icons/bs";
 
 export default {
-  name: "outcomeStep",
-  type: "document",
+  name: "stepOutcome",
+  type: "object",
   title: "Outcome",
   description: "Use this to descibe the outcome of a previous step",
   icon: BsArrowBarDown,
@@ -12,7 +12,7 @@ export default {
   fields: [
     {
       ...basicText,
-      name: "instruction",
+      name: "outcome",
       // type: "string",
       title: "Outcome",
       description: "State the outcome",

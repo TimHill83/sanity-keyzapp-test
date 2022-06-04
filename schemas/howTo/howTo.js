@@ -36,27 +36,18 @@ export default {
       type: "array",
       of: [
         {
-          type: "howToStep",
-          title: "Step",
-        },
-        {
           type: "reference",
           name: "stepReference",
           title: "Step from Library",
           to: [{ type: "howToStep" }],
         },
-        {
-          type: "outcomeStep",
-          title: "Outcome",
-        },
-        {
-          type: "reference",
-          name: " outcomeReference",
-          title: "Outcome from Library",
-          to: [{ type: "outcomeStep" }],
-        },
       ],
       group: "howTo",
+    },
+    {
+      name: "outcomes",
+      type: "array",
+      of: [{ type: "stepOutcome" }],
     },
   ],
 };
