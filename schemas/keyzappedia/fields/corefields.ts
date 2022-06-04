@@ -19,10 +19,18 @@ const fieldgroups = [
 
 /** Retuns an array of field groups for use in Sanity document schemas */
 function fieldGroupList(middleGroup?:Array<any>) : Array<any> {
+  
+  // Check to see if the added fieldgroups should be set to default
+  let defaultset = false;
+  if (middleGroup?.length > 0)
+  {
+    defaultset = middleGroup.some(obj => !!obj.default)
+  }
+  
   let initialGroup = [{
     name: "core",
     title: "Core Data",
-    default: true,
+    default: !defaultset,
   },
   {
     name: "synonyms",
