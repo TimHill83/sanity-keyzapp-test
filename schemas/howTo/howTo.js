@@ -2,7 +2,7 @@ import {
   fields,
   fieldGroupList,
   fieldsets,
-} from "./keyzappedia/fields/corefields";
+} from "../keyzappedia/fields/corefields";
 import { TbListNumbers } from "react-icons/tb";
 
 export default {
@@ -41,8 +41,19 @@ export default {
         },
         {
           type: "reference",
+          name: "stepReference",
           title: "Step from Library",
           to: [{ type: "howToStep" }],
+        },
+        {
+          type: "outcomeStep",
+          title: "Outcome",
+        },
+        {
+          type: "reference",
+          name: " outcomeReference",
+          title: "Outcome from Library",
+          to: [{ type: "outcomeStep" }],
         },
       ],
       group: "howTo",

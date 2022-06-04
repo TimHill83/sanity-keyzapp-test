@@ -1,4 +1,4 @@
-import basicText from "./keyzappedia/fields/basicText";
+import basicText from "../keyzappedia/fields/basicText";
 
 export default {
   name: "stepText",

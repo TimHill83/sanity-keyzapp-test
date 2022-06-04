@@ -1,5 +1,5 @@
-import basicText from "./keyzappedia/fields/basicText";
-import { fields, fieldGroupList } from "./keyzappedia/fields/corefields";
+import basicText from "../keyzappedia/fields/basicText";
+import { fields, fieldGroupList } from "../keyzappedia/fields/corefields";
 import { FaRegCheckSquare } from "react-icons/fa";
 
 export default {

@@ -19,9 +19,10 @@ import highlightText from "./keyzappedia/highlightText";
 import dataView from "./keyzappedia/dataView";
 import articleContent from "./keyzappedia/articleContent";
 import { topicSchemas } from "./keyzappedia/topics/";
-import howTo from "./howTo";
-import howToStep from "./howToStep";
-import stepText from "./stepText";
+import howTo from "./howTo/howTo";
+import howToStep from "./howTo/howToStep";
+import outcomeStep from "./howTo/outcomeStep";
+import stepText from "./howTo/stepText";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -48,6 +49,7 @@ export default createSchema({
     articleContent,
     stepText,
     howToStep,
+    outcomeStep,
     howTo,
     ...topicSchemas,
   ]),
