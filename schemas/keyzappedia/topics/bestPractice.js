@@ -14,8 +14,8 @@ export default {
   fields: [
     {
       ...fields.name,
-      title: "Standard Name",
-      description: "The name of the standard",
+      title: "Best Practice Name",
+      description: "The name of the Best Practice",
     },
     {
       name: "relatesTo",
