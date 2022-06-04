@@ -29,3 +29,9 @@ An "Outcome is not a step, but it is information (basically in the same format) 
 Initially I created a separate document called `outcome` that was referenced from the HowTo, but since an outcome is always dependent on a Step, I put an outcomes array in the step.
 ### How to handle Recommended next How-To's?
 **ToDo:** This is straying into process territory, but for a customer user especially, there are sometimes processes that logically follow that they should be able to look up.  Perhaps add this as a further optional link.
+
+### Consider- allow nesting of howTos?
+?? Sometimes you might want to wrap a "How To" in extra steps (e.g. For a Keyzapp agent you might to have steps like "Login as Sysadmin" first)
+
+### Consider- audience and context for howTos
+?? E.g. logged into Sysadmin? Is context different to audience?
