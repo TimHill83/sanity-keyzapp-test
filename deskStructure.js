@@ -4,6 +4,7 @@ import MjmlRenderer from "./components/MjmlRenderer";
 import { getEditorTitle } from "./helpers/getEditorTitle";
 import { createSuperPane } from "sanity-super-pane";
 import { topicFilterGroq } from "./schemas/keyzappedia/topics";
+import { TbListNumbers } from "react-icons/tb";
 
 import technologyProduct from "./schemas/keyzappedia/topics/technologyProduct";
 
@@ -65,6 +66,8 @@ export default () =>
             "emailTemplate",
             "technologyProduct",
             "articleContent",
+            "howTo",
+            "howToStep",
           ].includes(item.getId())
       ),
       S.listItem()
@@ -90,8 +93,22 @@ export default () =>
                 .child(createSuperPane("technologyProduct", S)),
             ])
         ),
+      S.listItem()
+        .title("How Tos")
+        .icon(TbListNumbers)
+        .child(
+          S.list()
+            .title("How Tos")
+            .items([
+              ...S.documentTypeListItems().filter((item) =>
+                ["howTo", "howToStep"].includes(item.getId())
+              ),
+              //   .filter(
+              //   (item) => item.getId() === "media.tag"
+              // ),
+            ])
+        ),
       S.divider(),
-
       S.listItem()
         .title("Management")
         .child(
