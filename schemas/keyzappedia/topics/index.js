@@ -6,15 +6,17 @@ import industry from "./industry";
 import question from "./question";
 import standard from "./standard";
 import term from "./term";
+import resource from "./resource";
 
 export const topicSchemas = [
-  technologyProduct,
+  generalArticle,
   bestPractice,
   company,
-  generalArticle,
   industry,
   question,
+  resource,
   standard,
+  technologyProduct,
   term,
 ];
 
