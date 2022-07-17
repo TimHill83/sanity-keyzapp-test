@@ -34,9 +34,10 @@ export default {
     { type: "baseImage" },
     { type: "dataView" },
     {
+      name: "howToReference",
+      title: "How To",
       type: "reference",
       to: [{ type: "howTo" }],
-      title: "How To",
     },
   ],
 };
