@@ -19,7 +19,7 @@ export default {
         annotations: [
           {
             name: "relatedTerm",
-            title: "Related Term",
+            title: "Related Item",
             type: "internalLink",
           },
           {
@@ -33,5 +33,10 @@ export default {
     { type: "highlightText" },
     { type: "baseImage" },
     { type: "dataView" },
+    {
+      type: "reference",
+      to: [{ type: "howTo" }],
+      title: "How To",
+    },
   ],
 };

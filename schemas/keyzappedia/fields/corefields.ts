@@ -152,7 +152,7 @@ const fields = {
     },
   articleText: {
     ...articleText,
-    title: "ArticleText",
+    title: "Article",
     description: "An explanatory article",
     group: "article",
   },
